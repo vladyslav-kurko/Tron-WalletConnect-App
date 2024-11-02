@@ -8,9 +8,10 @@ import { walletConnect } from 'wagmi/connectors'
 
 import config from './config'
 
-const { projectId, metadata, chains: networks, ethAbi, ethContractAddress, functionName } = config
-
 import WalletConnect from './components/wallet-connect'
+import TronConnect from './components/tron-connect'
+
+const { projectId, metadata, chains: networks } = config
 
 const queryClient = new QueryClient()
 
@@ -48,6 +49,8 @@ export default function App() {
     <WagmiProvider config={wagmiAdapter.wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <WalletConnect />
+        <hr />
+        <TronConnect />
       </QueryClientProvider>
     </WagmiProvider>
   )
