@@ -9,7 +9,7 @@ import { walletConnect } from 'wagmi/connectors'
 import config from './config'
 
 import WalletConnect from './components/wallet-connect'
-import TronConnect from './components/tron-connect'
+// import TronConnect from './components/tron-connect'
 import TronAdapterConnect from './components/tron-adapter-connect'
 
 const { projectId, metadata, chains: networks } = config
@@ -37,7 +37,7 @@ console.log("wagmiAdapter", wagmiAdapter)
 // 5. Create modal
 createAppKit({
   adapters: [wagmiAdapter],
-  networks,
+  networks: networks as any,
   projectId,
   metadata,
   features: {
@@ -49,9 +49,16 @@ export default function App() {
   return (
     <WagmiProvider config={wagmiAdapter.wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <WalletConnect />
-        <hr />
-        <TronAdapterConnect />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <WalletConnect />
+            </div>
+            <div className="col-md-6">
+              <TronAdapterConnect />
+            </div>
+          </div>
+        </div>
         {/* <TronConnect /> */}
       </QueryClientProvider>
     </WagmiProvider>

