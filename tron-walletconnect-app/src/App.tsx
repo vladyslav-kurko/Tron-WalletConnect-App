@@ -10,6 +10,7 @@ import config from './config'
 
 import WalletConnect from './components/wallet-connect'
 import TronConnect from './components/tron-connect'
+import TronAdapterConnect from './components/tron-adapter-connect'
 
 const { projectId, metadata, chains: networks } = config
 
@@ -50,7 +51,8 @@ export default function App() {
       <QueryClientProvider client={queryClient}>
         <WalletConnect />
         <hr />
-        <TronConnect />
+        <TronAdapterConnect />
+        {/* <TronConnect /> */}
       </QueryClientProvider>
     </WagmiProvider>
   )
