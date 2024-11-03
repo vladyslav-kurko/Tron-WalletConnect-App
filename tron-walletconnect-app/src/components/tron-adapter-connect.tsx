@@ -1,76 +1,69 @@
-import { WalletReadyState } from '@tronweb3/tronwallet-abstract-adapter';
-import { TronLinkAdapter } from '@tronweb3/tronwallet-adapters';
-import { useState, useMemo, useEffect } from 'react';
+import { useWallet, WalletProvider } from '@tronweb3/tronwallet-adapter-react-hooks';
+import { WalletModalProvider, WalletActionButton } from '@tronweb3/tronwallet-adapter-react-ui';
+import '@tronweb3/tronwallet-adapter-react-ui/style.css';
+import { WalletDisconnectedError, WalletError, WalletNotFoundError } from '@tronweb3/tronwallet-abstract-adapter';
+import toast, { Toaster } from 'react-hot-toast';
+import { useState, useEffect } from 'react';
 
 export default function TronAdapterConnect() {
- const [readyState, setReadyState] = useState(WalletReadyState.NotFound);
- const [account, setAccount] = useState('');
- const [network, setNetwork] = useState({});
- const [signedMessage, setSignedMessage] = useState('');
+    // here use `react-hot-toast` npm package to notify user what happened
+    function onError(e: WalletError) {
+        if (e instanceof WalletNotFoundError) {
+            toast.error(e.message);
+        } else if (e instanceof WalletDisconnectedError) {
+            toast.error(e.message);
+        } else toast.error(e.message);
+    }
+    return (
+    <WalletProvider onError={onError}>
+        <WalletModalProvider>
+        <ConnectComponent></ConnectComponent>
+        <Profile></Profile>
+        </WalletModalProvider>
+    </WalletProvider>
+    );
+}
+function ConnectComponent() {
+    return <WalletActionButton></WalletActionButton>;
+}
+function Profile() {
+ const { address, connected, wallet } = useWallet();
+ const [balance, setBalance] = useState(null); // State to store the balance
 
- const adapter = useMemo(() => new TronLinkAdapter(), []);
- useEffect(() => {
-   setReadyState(adapter.state as any);
-   setAccount(adapter.address!);
-
-   adapter.on('connect', () => {
-     setAccount(adapter.address!);
-     setNetwork(adapter.network);
-     console.log("network", network)
-   });
-
-   adapter.on('readyStateChanged', state => {
-     setReadyState(state);
-     setNetwork(adapter.network);
-   });
-
-   adapter.on('accountsChanged', data => {
-     setAccount(data);
-   });
-
-   adapter.on('chainChanged', data => {
-     setNetwork(data as any);
-   });
-
-   adapter.on('disconnect', () => {
-     setAccount('');
-     setReadyState(adapter.state as any);
-     setNetwork(adapter.network);
-   });
-   return () => {
-     // remove all listeners when components is destroyed
-     adapter.removeAllListeners();
-   };
- }, []);
-
- async function sign() {
-   const res = await adapter!.signMessage('helloworld');
-   setSignedMessage(res);
- }
-
+  useEffect(() => {
+    async function fetchBalance() {
+      if (window.tronWeb && address) {
+        try {
+          const balanceInSun = await window.tronWeb.trx.getBalance(address); // Fetch balance in SUN (Tron’s smallest unit)
+          setBalance((balanceInSun / 1e6) as any); // Convert balance to TRX
+        } catch (error) {
+          console.error('Error fetching balance:', error);
+          setBalance(null);
+        }
+      }
+    }
+    fetchBalance();
+  }, [address, connected]); // Re-fetch balance if the address changes
  return (
    <div>
-        <h1>Tron Connect</h1>
-        {adapter.connected ? (
-            <div>
-                <button disabled={!adapter.connected} onClick={() => adapter.disconnect()}>
-                    Disconnect
-                </button>
-                <br />
-                <p>Address: {account}</p>
-                <p>Network: {JSON.stringify(network)}</p>
-                <p>Balance: -</p>
-                <button onClick={sign}>sign message</button>
-                <p>SignedMessage: {signedMessage}</p>
-            </div>
-        ) : (
+     <p>
+        {connected ? 'Connected' : 'Not connected'}
+     </p>
+     {
+        connected ? (
             <>
-                <p>{readyState}</p>
-                <button disabled={(readyState == WalletReadyState.Loading || readyState == WalletReadyState.NotFound)} onClick={() => adapter.connect()}>
-                    Connect to TronLink
-                </button>
+                <p>
+                    <span>Your selected Wallet:</span> {wallet?.adapter.name}
+                </p>
+                <p>
+                    <span>Address:</span> {address}
+                </p>
+                <p>
+                    <span>Balance:</span> {connected && balance !== null ? `${balance} TRX` : 'Not available...'}
+                </p>
             </>
-        )}
+
+        ) : null}
    </div>
  );
 }

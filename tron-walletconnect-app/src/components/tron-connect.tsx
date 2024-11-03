@@ -8,7 +8,7 @@ export default function TronConnect() {
   const [balance, setBalance] = useState<number | null>(null)
 
   const tron = window.tron;
-  const tronWeb = tron.tronWeb;
+  const tronWeb = tron?.tronWeb;
 
   useEffect(() => {
     const checkWallet = async () => {
