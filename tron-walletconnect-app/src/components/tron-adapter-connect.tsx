@@ -24,7 +24,7 @@ export default function TronAdapterConnect() {
         } else toast.error(e.message);
     }
     return (
-    <WalletProvider onError={onError}>
+    <WalletProvider onError={onError} autoConnect={true} disableAutoConnectOnLoad={true}>
         <WalletModalProvider>
         <h1>Tron Connect</h1>
         <TronConnectButton></TronConnectButton>
