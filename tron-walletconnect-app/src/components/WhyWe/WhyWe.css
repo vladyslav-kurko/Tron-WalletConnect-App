@@ -1,0 +1,109 @@
+.why-we-title {
+    font-size: 3rem;
+    line-height: 3rem;
+    margin-bottom: 100px;
+    font-weight: bold;
+}
+
+.why-point {
+    border-radius: 30px;
+    padding: 40px 30px 50px 50px;
+}
+
+.why-point-title {
+    margin-bottom: 30px;
+}
+
+.why-point-left {
+    background-color: #ECF3F8;
+}
+
+.why-point-right {
+    background-color: #F3F4FD;
+}
+
+.why-point-title img {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+}
+
+.why-point-title h4 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.why-point ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; /* Remove default bullets */
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.why-point li {
+    position: relative;
+    padding-left: 1.7rem;
+    font-size: 1.25rem;
+    line-height: 146%;
+    color: #637381;
+}
+
+.why-point-left li::before {
+    content: " ";
+    position: absolute;
+    top: 1.1rem;
+    left: 0;
+    display: block;
+    width: 0.6rem;
+    height: 0.6rem;
+    background-color: #039be7;
+    border-radius: 50%;
+}
+
+.why-point-right li::before {
+    content: " ";
+    position: absolute;
+    top: 1.1rem;
+    left: 0;
+    display: block;
+    width: 0.6rem;
+    height: 0.6rem;
+    background-color: #6445ff;
+    border-radius: 50%;
+}
+
+.button-row {
+    margin-top: 50px;
+}
+
+/* Mobile specific styles */
+@media (max-width: 767.98px) {
+    .why-we-title {
+        font-size: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .why-point {
+        border-radius: 20px;
+        padding: 30px 20px;
+    }
+
+    .why-point-title h4 {
+        font-size: 1.5rem;
+    }
+
+    .why-point ul {
+        gap: 1.25rem;
+    }
+
+    .why-point li {
+        padding-left: 1.25rem;
+        font-size: 0.9rem;
+    }
+
+    .button-row {
+        margin-top: 34px;
+    }
+}

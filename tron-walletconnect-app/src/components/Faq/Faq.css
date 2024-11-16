@@ -1,0 +1,121 @@
+.faq-title {
+    font-size: 3rem;
+    line-height: 3rem;
+    margin-bottom: 100px;
+    font-weight: bold;
+}
+
+.contact-us {
+    padding: 2.5rem;
+    background-color: #F4F8FE;
+    position: sticky;
+    top: 40px;
+    z-index: 100;
+    border-radius: 20px;
+}
+
+.contact-us-title {
+    font-size: 1.5rem;
+}
+
+.contact-us-description {
+    font-size: 1rem;
+    color: #637381;
+    margin-top: 1.25rem;
+    margin-bottom: 1.8rem;
+}
+
+.contact-us-info {
+    font-size: 0.9rem;
+    color: #637381;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+/* Style for the entire Accordion */
+.accordion {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Style for Accordion Header */
+.accordion-button {
+    background-color: transparent;
+    color: #2b2f33; /* Dark text */
+    font-size: 1.5rem; /* Slightly larger font size */
+    font-weight: 500;
+    padding: 2rem 0; /* More padding for better spacing */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px; /* Space between text and arrow */
+}
+
+.accordion-button:focus {
+    outline: none; /* Removes the default focus outline */
+    box-shadow: none; /* Removes any box-shadow focus styling from Bootstrap */
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #ffffff; /* White background for active state */
+    color: #2b2f33; /* Dark text for active state */
+    box-shadow: none; /* Remove default Bootstrap box-shadow */
+}
+
+/* Accordion Body */
+.accordion-body {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: #637381; /* Subtle gray for content */
+    padding: 0; /* Add padding */
+    margin-bottom: 2rem;
+}
+
+/* Add spacing between accordion items */
+.accordion-item {
+    border: none;
+    border-bottom: 1px solid #e2e8f0; /* Subtle divider */
+}
+
+/* Optional: Add hover effect */
+.accordion-button:hover {
+    color: #6a747a;
+}
+
+/* Mobile specific styles */
+@media (max-width: 767.98px) {
+    .faq-title {
+        font-size: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .accordion-button {
+        font-size: 1.25rem; /* Slightly larger font size */
+        padding: 1.5rem 0; /* More padding for better spacing */
+    }
+
+    .accordion-body {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    
+    .contact-us {
+        padding: 1.25rem;
+        padding-top: 1.9rem;
+    }
+
+    .contact-us-title {
+        font-size: 1.25rem;
+    }
+
+    .contact-us-description {
+        font-size: 0.9rem;
+        margin-top: 0.7rem;
+        margin-bottom: 1.9rem;
+    }
+
+    .contact-us-info {
+        margin-top: 1.25rem;
+    }
+}

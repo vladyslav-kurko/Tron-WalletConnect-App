@@ -1,0 +1,65 @@
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 1rem;
+    font-weight: 500;
+    width: 100%;
+}
+
+.icon-button-start {
+    justify-content: start;
+}
+
+.icon-button-space-between {
+    justify-content: space-between;
+}
+
+.icon-button-black {
+    color: black;
+}
+
+.icon-button-white {
+    color: white;
+}
+
+.icon-button:hover {
+    opacity: .55;
+    text-decoration: underline;
+}
+
+.icon-button-text-medium {
+    font-size: 1.25rem;
+}
+
+.icon-button-text-small {
+    font-size: 1rem;
+}
+
+.icon-button-svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    vertical-align: middle;
+}
+
+.icon-button-white .icon-button-svg {
+    fill: white;
+}
+
+.icon-button-black .icon-button-svg {
+    fill: black;
+}
+
+.icon-button:hover .icon-button-svg {
+    opacity: .9;
+}
+
+@media (max-width: 1199.98px) {
+    .icon-button-start {
+        justify-content: center;
+    }
+    
+    .icon-button-space-between {
+        justify-content: center;
+    }
+}

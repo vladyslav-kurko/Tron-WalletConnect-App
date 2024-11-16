@@ -1,0 +1,46 @@
+.save-crypto-section {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.save-crypto-container {
+    background-image: url("../../assets/save-crypto-bg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 40px;
+}
+
+.save-crypto-content {
+    padding: 120px;
+}
+
+.save-crypto-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 120px;
+}
+
+@media (max-width: 1400px) {
+    .save-crypto-section {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+/* Mobile specific styles */
+@media (max-width: 767.98px) {
+
+    .save-crypto-title {
+        font-size: 1.8rem;
+    }
+
+    .save-crypto-content {
+        padding: 100px 20px 50px 20px;
+    }
+
+    .save-crypto-title {
+        margin-bottom: 60px;
+    }
+}

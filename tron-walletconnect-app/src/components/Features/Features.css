@@ -1,0 +1,55 @@
+.features-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.feature-card {
+  flex: 1;
+  background-color: #F4F8FE;
+  border-radius: 12px;
+  padding: 40px 28px;
+}
+
+.feature-title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #000;
+  margin-top: 25px;
+}
+
+.feature-description {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #637381;
+  line-height: 1.5;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+  
+/* Mobile specific styles */
+@media (max-width: 767.98px) {
+  .feature-card {
+    margin: 4px auto;
+    padding: 18px 4px;
+  }
+
+  .feature-title {
+    font-size: 1.25rem;
+    margin-top: 6px;
+  }
+
+  .feature-description {
+    font-size: 0.9rem;
+    margin-top: 11px;
+    margin-bottom: 12px ;
+  }
+
+  .feature-card-icon {
+    width: 100%; /* Makes the image take full width of the parent */
+    height: auto;
+  }
+
+  .image-col {
+    padding-right: 0;
+  }
+}

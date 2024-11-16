@@ -1,0 +1,62 @@
+.primary-button {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 999px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    gap: 1.5rem;
+}
+.primary-button-blue {
+    background-color: #0057FF; /* Custogmize button color */
+    color: white;
+}
+
+.primary-button-blue:hover {
+    background-color: #0028b5;
+}
+
+.primary-button-white {
+    background-color: #ffffff; /* Customize button color */
+    color: rgb(0, 0, 0);
+}
+
+.primary-button-white:hover {
+    background-color: #0028b5;
+    color: white;
+}
+
+.primary-button-medium {
+    padding: 1.5rem 2rem;
+}
+
+.primary-button-small {
+    padding: 1rem 1.3rem;
+}
+
+.button-text-medium {
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+}
+
+.button-text-small {
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
+
+  /* Mobile specific styles */
+@media (max-width: 767.98px) {
+    .primary-button {
+        font-size: 1.1rem;
+        padding: 1.2rem 2rem;
+        gap: 1.25rem;
+    }
+
+    .button-text {
+        line-height: 1.1rem;
+    }
+}
+  

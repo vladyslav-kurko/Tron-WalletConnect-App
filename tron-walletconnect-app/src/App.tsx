@@ -7,10 +7,47 @@ import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 import { walletConnect } from 'wagmi/connectors'
 
 import config from './config'
+import "./App.css"
 
-import WalletConnect from './components/wallet-connect'
+// import WalletConnect from './components/wallet-connect'
 // import TronConnect from './components/tron-connect'
-import TronAdapterConnect from './components/tron-adapter-connect'
+// import TronAdapterConnect from './components/tron-adapter-connect'
+import Navbar from './components/Navbar/Navbar'
+import Home from './components/Home/Home'
+import Features from './components/Features/Features'
+import TextImages from './components/TextImages/TextImages'
+import SecurityFeatures from './components/SecurityFeatures/SecurityFeatures'
+import VerificationSteps from './components/VerificationSteps/VerificationSteps'
+import RiskMessage from './components/RiskMessage/RiskMessage'
+import Ruler from './components/Ruler/Ruler'
+import BinanceLogo from './assets/binance.png';
+import OkxLogo from './assets/okx.png';
+import GateIoLogo from './assets/gateio.png';
+import KunaLogo from './assets/kuna.png';
+import InatbaLogo from './assets/inatba.png';
+import CdaLogo from './assets/cda.png';
+import AtiiLogo from './assets/atii.png';
+import Lsw3Logo from './assets/lsw3.png';
+import EbaLogo from './assets/eba.png';
+import WhyWe from './components/WhyWe/WhyWe'
+import SaveCrypto from './components/SaveCrypto/SaveCrypto'
+import Faq from './components/Faq/Faq'
+import Footer from './components/Footer/Footer'
+
+const partnerImages = [
+  { name: 'Binance', image: BinanceLogo },
+  { name: 'OKX', image: OkxLogo },
+  { name: 'Gate.io', image: GateIoLogo },
+  { name: 'Kuna', image: KunaLogo },
+];
+
+const representitiveImages = [
+  { name: 'INATBA', image: InatbaLogo },
+  { name: 'CDA', image: CdaLogo },
+  { name: 'ATII', image: AtiiLogo },
+  { name: 'LSW3', image: Lsw3Logo },
+  { name: 'EBA', image: EbaLogo },
+];
 
 const { projectId, metadata, chains: networks } = config
 
@@ -49,7 +86,23 @@ export default function App() {
   return (
     <WagmiProvider config={wagmiAdapter.wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-        <div className="container">
+        <div className="site-container">
+          <Navbar />
+          <Home />
+          <Features />
+          <TextImages title="Нам доверяют специалисты отделов контроля" images={partnerImages} />
+          <RiskMessage />
+          <Ruler />
+          <SecurityFeatures />
+          <VerificationSteps />
+          <WhyWe />
+          <TextImages title="Мы являемся доверенными представителями" images={representitiveImages} />
+          <Faq />
+          <SaveCrypto />
+          <Footer />
+        </div>
+        
+        {/* <div className="container">
           <div className="row">
             <div className="col-md-6">
               <WalletConnect />
@@ -58,8 +111,7 @@ export default function App() {
               <TronAdapterConnect />
             </div>
           </div>
-        </div>
-        {/* <TronConnect /> */}
+        </div> */}
       </QueryClientProvider>
     </WagmiProvider>
   )

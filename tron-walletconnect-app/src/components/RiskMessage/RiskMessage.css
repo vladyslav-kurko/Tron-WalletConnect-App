@@ -1,0 +1,49 @@
+.risk-message-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.highlight {
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 57px;
+    background: radial-gradient(32.13% 108.17% at 43% 34.68%, #a4d3ff80 0%, rgba(124, 220, 241, 0) 100%),
+                radial-gradient(94.99% 254.92% at 94.27% -88.79%, rgba(171, 135, 255, 0.877) 0%, rgba(185, 57, 254, 0) 100%),
+                radial-gradient(63.69% 226.36% at -9.88% 138.08%, #3561FE 0%, rgba(57, 89, 254, 0) 100%);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 45px;
+}
+
+
+.risk-icon { 
+    max-width: 100%;
+    height: auto;
+}
+
+.risk-text {
+    color: #637381;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Mobile specific styles */
+@media (max-width: 767.98px) {
+    .risk-message-container {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .highlight {
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 2rem;
+        margin-bottom: 17px;
+    }
+
+    .risk-text {
+        font-size: 0.8rem;
+    }
+}
