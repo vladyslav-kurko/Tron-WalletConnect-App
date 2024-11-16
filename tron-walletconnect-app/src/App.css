@@ -1,11 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #ffffff;
-  margin: 0;
-  box-sizing: border-box;
 }
 
 body, html {
   font-family: 'Inter', Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  width: 100%
 }
 
 :root {
