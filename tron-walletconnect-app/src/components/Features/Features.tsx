@@ -24,7 +24,7 @@ const featuresData = [
 
 const Features: React.FC = () => {
   return (
-    <div className="features-container wrapper section">
+    <div className="features-container wrapper-overflow section">
       <div className="container">
         <div className="row equal-height-row d-flex flex-wrap gx-2">
           {featuresData.map((feature, index) => (

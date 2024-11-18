@@ -11,6 +11,12 @@ body, html {
   margin: 0 auto; /* Center content */
 }
 
+.wrapper-overflow {
+  max-width: 1200px; /* Adjust based on your design */
+  margin: 0 auto; /* Center content */
+  overflow-x: hidden;
+}
+
 .wide-wrapper {
   max-width: 1492px;
   margin: 0 auto;

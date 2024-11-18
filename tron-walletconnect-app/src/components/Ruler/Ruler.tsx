@@ -3,7 +3,7 @@ import './Ruler.css';
 
 const Ruler: React.FC = () => {
     return (
-      <div className="ruler-container wrapper section">
+      <div className="ruler-container wrapper-overflow section">
           <div className="container">
             <div className="row">
                 <div className="col">

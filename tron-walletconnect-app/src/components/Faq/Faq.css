@@ -1,3 +1,11 @@
+.faq-component {
+    max-width: 100%;
+} 
+
+.faq-container .container .row {
+    max-width: 100%;
+}
+
 .faq-title {
     font-size: 3rem;
     line-height: 3rem;
@@ -9,9 +17,10 @@
     padding: 2.5rem;
     background-color: #F4F8FE;
     position: sticky;
-    top: 40px;
+    top: 100px;
     z-index: 100;
     border-radius: 20px;
+    display: block;
 }
 
 .contact-us-title {

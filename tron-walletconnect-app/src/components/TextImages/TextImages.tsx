@@ -13,7 +13,7 @@ interface TextImagesProps {
 
 const TextImages: React.FC<TextImagesProps> = ({title, images}) => {
   return (
-    <div className="text-images-container wrapper section">
+    <div className="text-images-container wrapper-overflow section">
         <div className="container text-images-section">
           <div className="row align-items-center justify-content-center gy-4">
             <div className="col-lg-4">

@@ -4,7 +4,7 @@ import AttentionImage from '../../assets/attention.png';
 
 const RiskMessage: React.FC = () => {
     return (
-      <div className="risk-message-container wrapper section">
+      <div className="risk-message-container wrapper-overflow section">
           <div className="container risk-message-section">
             <div className="row text-center">
                 <p className="highlight">

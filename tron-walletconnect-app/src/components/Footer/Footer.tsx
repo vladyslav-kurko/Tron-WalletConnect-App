@@ -12,7 +12,7 @@ import MediumLogo from '../../assets/medium-circle.png'
 
 const Footer: React.FC = () => {
   return (
-    <div className="footer-section wrapper section">
+    <div className="footer-section wrapper-overflow section">
       <div className="container">
         <div className="footer-container">
           <div className="row justify-content-between gx-4 gx-lg-5 gy-3">

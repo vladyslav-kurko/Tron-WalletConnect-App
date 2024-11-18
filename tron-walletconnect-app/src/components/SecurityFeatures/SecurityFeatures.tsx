@@ -32,7 +32,7 @@ const features = [
 
 const SecurityFeatures: React.FC = () => {
   return (
-    <div className="secutity-features-container wrapper section">
+    <div className="secutity-features-container wrapper-overflow section">
         <Container className="features-section">
             <Row className="text-center">
                 <Col>

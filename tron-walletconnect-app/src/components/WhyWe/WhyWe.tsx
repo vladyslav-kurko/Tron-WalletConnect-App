@@ -8,7 +8,7 @@ import PrimaryBtn from '../elements/PrimaryBtn/PrimaryBtn';
 
 const WhyWe: React.FC = () => {
   return (
-    <div className="why-we-container wrapper section">
+    <div className="why-we-container wrapper-overflow section">
       <div className="container">
         <div className="row text-center">
           <div>
