@@ -1,18 +1,17 @@
 import React from 'react'
-import TelegramIcon from '../../../assets/telegram-icon.png';
-import "./ButtonsGroup.css"
-import PrimaryBtn from '../PrimaryBtn/PrimaryBtn';
-import SecondaryBtn from '../SecondaryBtn/SecondaryBtn';
+// import TelegramIcon from '../../../assets/telegram-icon.png';
+// import "./ButtonsGroup.css"
+// import PrimaryBtn from '../PrimaryBtn/PrimaryBtn';
+// import SecondaryBtn from '../SecondaryBtn/SecondaryBtn';
 import TronAdapterConnect from '../../tron-adapter-connect';
 import WalletConnect from '../../wallet-connect';
-import { WalletConnectButton } from '../../buttons/wallet-connect-button';
-import TronConnectButton from '../../buttons/tron-connect-button';
 
-interface ButtonsGroupProps {
-    secondaryColor?: 'white' | 'black';
-}
+// interface ButtonsGroupProps {
+//     secondaryColor?: 'white' | 'black';
+// }
 
-const ButtonsGroup: React.FC<ButtonsGroupProps> = ({secondaryColor = "black"}) => {
+//const ButtonsGroup: React.FC<ButtonsGroupProps> = ({secondaryColor = "black"}) => {
+const ButtonsGroup: React.FC = () => {
     return (
         <div className="row justify-content-center align-items-center flex-wrap gx-5 gy-4">
             <div className="col-xl-4 col-lg-7">

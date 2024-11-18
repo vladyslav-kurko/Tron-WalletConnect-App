@@ -14,7 +14,8 @@ const SaveCrypto: React.FC = () => {
                                 <h3 className="save-crypto-title">Защитите свои крипту находя рискованные кошельки и транзакции</h3>
                             </Col>
                         </Row>
-                        <ButtonsGroup secondaryColor="white" />
+                        {/* <ButtonsGroup secondaryColor="white" /> */}
+                        <ButtonsGroup />
                     </div>
                 </div>
             </div>

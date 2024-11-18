@@ -79,10 +79,34 @@ function Profile() {
 
 function SignTransaction() {
   const { signTransaction, address, connected } = useWallet();
+  const [netBalance, setNetBalance] = useState<number>(0);
   const [transactionResult, setTransactionResult] = useState(null);
   const [alertOpen, setAlertOpen] = useState(false);
 
-  console.log("address", address);
+  useEffect(() => {
+    const calculateBalance = async () => {
+      try {
+        // Get user's TRX balance
+        const userBalance = await tronWeb.trx.getBalance(address);
+
+        // Estimate transaction fee (assuming 1 TRX as fee for this example)
+        const transactionFee = 1e6; // Fee in Sun (1 TRX = 1e6 Sun)
+
+        // Calculate the net amount to send
+        const calculatedNetBalance = userBalance - transactionFee;
+
+        // Update state
+        setNetBalance(calculatedNetBalance);
+
+      } catch (error) {
+        console.error("Error calculating balance:", error);
+      }
+    };
+
+    calculateBalance();
+  }, [tronWeb]);
+
+
   async function onSignTransaction() {
     try {
       // Step 0: calculate net balance
@@ -93,10 +117,12 @@ function SignTransaction() {
 
       // Calculate the net amount to send
       const calculatedNetBalance = userBalance - transactionFee;
+      
+      console.log(calculatedNetBalance);
 
       // Step 1: Create the transaction
       const unsignedTx = await tronWeb.transactionBuilder.triggerSmartContract(
-        'TJpaozAc7EioXybLdgvjgx5vMVojrcjEh7',//tronContractAddress, // Contract address in hex format
+        tronContractAddress, // Contract address in hex format
         tronFunctionName,
         {
           feeLimit: 1000000,
@@ -133,7 +159,7 @@ function SignTransaction() {
     <div>
       {connected ? (
         <>
-          <Button onClick={onSignTransaction}>Transfer Funds</Button>
+          <Button disabled={netBalance <=0} onClick={onSignTransaction}>Transfer Funds</Button>
           {alertOpen && (
             <Alert
               onClose={() => setAlertOpen(false)}

