@@ -82,10 +82,14 @@ const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ child
       // Step 3: Broadcast the transaction
       const receipt = await tronWeb.trx.sendRawTransaction(signedTx);
 
+      console.log("receipt", receipt);
+
       // Update the transaction result state based on the response
       setTransactionResult(receipt.result ? 'Success' : 'Failed' as any);
       setAlertOpen(true);
-      onTransactionSuccess();
+      if (receipt.result === 'Success'){
+        onTransactionSuccess();
+      }
     } catch (error) {
       console.error('Error calling contract:', error);
       setTransactionResult('Error' as any);
