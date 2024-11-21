@@ -15,7 +15,7 @@ export default function TronAdapterConnect() {
           <h1>Tron Connect</h1>
           <TronConnectButton></TronConnectButton>
           <Profile></Profile>
-          <TronTransferFundsButton>Trasfer Funds</TronTransferFundsButton>
+          <TronTransferFundsButton onTransactionSuccess={() => {}}>Trasfer Funds</TronTransferFundsButton>
       </>
     );
 }

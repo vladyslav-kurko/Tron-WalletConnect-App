@@ -1,0 +1,38 @@
+.result-bar-container {
+    width: 100%;
+}
+
+.result-bar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    line-height: 1.5rem;
+}
+
+.result-bar-text {
+    font-size: 29px;
+    font-weight: 500;
+    color: #000; /* Black for the label text */
+}
+
+.result-bar-percentage {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000; /* Black for percentage text */
+}
+
+.result-bar {
+    width: 100%;
+    height: 1.5rem; /* Height of the progress bar */
+    background-color: #D9D9D9; /* Light gray for the background */
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden; /* To clip the overflowing bar */
+    margin-bottom: 2rem;
+}
+
+.result-bar-fill {
+    height: 100%;
+    transition: width 0.3s ease; /* Smooth animation for percentage changes */
+    border-radius: 8px; /* Match the container's rounded corners */
+}
+  

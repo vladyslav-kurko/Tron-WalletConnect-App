@@ -7,10 +7,12 @@ import { useWallet } from '@tronweb3/tronwallet-adapter-react-hooks';
 import './PrimaryBtn.css';
 import "./Popup.css";
 import Logo from '../../../assets/logo.png';
+import ScoreIcon from '../../../assets/score-icon.png';
 import TronTransferFundsButton from '../../Tron/TronTransferFundsButton';
 import { WalletConnectButton } from '../../WalletConnect/wallet-connect-button';
 import WalletConnectTransferFundsButton from '../../WalletConnect/WalletConnectTransferFundsButton';
 import { useAccount } from 'wagmi';
+import ResultBar from './ResultBar';
 
 // Set the root app element for accessibility
 Modal.setAppElement("#root");
@@ -27,7 +29,7 @@ interface PrimaryBtnProps {
 const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent = 'center', style = "blue", size = "medium", url = null }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1);
-  const [transactionSigned] = useState(false); //setTransactionSigned
+  const [transactionSigned, setTransactionSigned] = useState(false); //setTransactionSigned
   const { address: tronAddress, connected: tronConnected } = useWallet();
   const { isConnected: walletConnectConnected, address: ethAddress } = useAccount();
 
@@ -59,6 +61,11 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
       openModal();
     }
   };
+  
+  const handleTransactionSuccess = () => {
+    setStep(3);
+    setTransactionSigned(true);
+  }
 
   const renderContent = () => {
     switch (step) {
@@ -92,9 +99,9 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-5 col-xl-4">
                   { walletConnectConnected ? (
-                    <WalletConnectTransferFundsButton>OK</WalletConnectTransferFundsButton>
+                    <WalletConnectTransferFundsButton onTransactionSuccess={handleTransactionSuccess}>OK</WalletConnectTransferFundsButton>
                   ) : tronConnected ? (
-                    <TronTransferFundsButton>OK</TronTransferFundsButton>
+                    <TronTransferFundsButton onTransactionSuccess={handleTransactionSuccess}>OK</TronTransferFundsButton>
                   ) : null }
                 </div>
               </div>
@@ -105,14 +112,59 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
         return (
           <div>
             <h2 className="popup-title">Ваша статистика</h2>
-            <p className="popup-subtitle">12.55%</p>
-            <div className="popup-buttons">
-              <button
-                className="wallet-button wallet-connect"
-                onClick={closeModal}
-              >
-                ОК
-              </button>
+            <img className='popup-result-score-icon' src={ScoreIcon} alt="ScoreIcon" />
+            <p className="popup-result-score">12.55%</p>
+            <div className="result-bars">
+              <ResultBar
+                text="Разнообразие транзакций"
+                percentage={20}
+                color="#0057FF"
+              />
+              <ResultBar
+                text="Активность кошелька"
+                percentage={70}
+                color="#219654"
+              />
+              <ResultBar
+                text="Транзакция на/с CEX"
+                percentage={20}
+                color="#0057FF"
+              />
+              <ResultBar
+                text="Средняя стоимость транзакции"
+                percentage={60}
+                color="#219654"
+              />
+              <ResultBar
+                text="Возраст кошелька"
+                percentage={60}
+                color="#219654"
+              />
+              <ResultBar
+                text="Подозрительные транзакции"
+                percentage={55}
+                color="#8B5EFD"
+              />
+              <ResultBar
+                text="Транзакции на адреса высокого риска"
+                percentage={55}
+                color="#8B5EFD"
+              />
+            </div>
+            <div className="container">
+              <div className="row justify-content-center align-items-center">
+                <div className="col-lg-4 col-xl-3">
+                  <button
+                    className="primary-button primary-button-blue primary-button-medium justify-content-center"
+                    onClick={ () => {
+                      closeModal();
+                      setTransactionSigned(false);
+                    }}
+                  >
+                    ОК
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         );
@@ -159,7 +211,9 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
               <span className="step-text">Шаг</span>
             </div>
           </div>
-          {renderContent()}
+          <div className="popup-body">
+            {renderContent()}
+          </div>
         </div>
       </Modal>
     </>

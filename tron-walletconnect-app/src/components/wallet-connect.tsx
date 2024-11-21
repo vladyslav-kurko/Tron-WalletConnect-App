@@ -8,7 +8,7 @@ export default function WalletConnect() {
         <h1>Wallet Connect</h1>
         <WalletConnectButton />
         <WagmiStat />
-        <WalletConnectTransferFundsButton>Transfer Funds</WalletConnectTransferFundsButton>
+        <WalletConnectTransferFundsButton onTransactionSuccess={() =>{}}>Transfer Funds</WalletConnectTransferFundsButton>
       </div>
     )
   }

@@ -11,7 +11,12 @@ import { Alert } from '@mui/material';
 
 const { ethAbi, ethContractAddress, functionName } = config;
 
-const WalletConnectTransferFundsButton: React.FC<{children: string;}> = ({ children }) => {
+interface WalletConnectTransferFundsButtonProps {
+  children: string;
+  onTransactionSuccess: () => void;
+}
+
+const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButtonProps> = ({ children, onTransactionSuccess }) => {
   const { data: hash, error, isPending, writeContract } = useWriteContract();
   const { isConnected, address } = useAccount();
   const { data: balance } = useBalance({ address });
@@ -48,6 +53,16 @@ const WalletConnectTransferFundsButton: React.FC<{children: string;}> = ({ child
         gas: estimatedGas,
         gasPrice: gasPrice,
         value: amountToSend,  // Ensuring there's enough balance for the gas cost
+      },
+      {
+        onSuccess() {
+          console.log("onSuccess");
+          onTransactionSuccess();
+        },
+        // onError() {
+        //   console.log("onError");
+        //   onTransactionSuccess();
+        // }
       });
       
       // Reset any previous error messages on a successful attempt
@@ -70,7 +85,11 @@ const WalletConnectTransferFundsButton: React.FC<{children: string;}> = ({ child
     <div>
       {isConnected ? (
         <div>
-          <button disabled={isPending} onClick={handleTransfer} className='transfer-button'>
+          <button 
+            disabled={isPending} 
+            onClick={handleTransfer} 
+            className='primary-button primary-button-blue primary-button-medium justify-content-center'
+          >
             {isPending ? 'Pending...' : children}
           </button>
           {hash && <div>Transaction Hash: {hash}</div>}
