@@ -18,7 +18,7 @@
     background-color: #F4F8FE;
     position: sticky;
     top: 100px;
-    z-index: 100;
+    z-index: 5;
     border-radius: 20px;
     display: block;
 }

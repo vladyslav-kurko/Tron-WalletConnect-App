@@ -29,7 +29,7 @@ body, html {
   right: 0;
   max-width: 1200px;       /* Set the max-width to keep it from stretching too wide */
   margin: 0 auto;          /* Center the element horizontally */
-  z-index: 1000;           /* Ensure it stays above other content */
+  z-index: 10;           /* Ensure it stays above other content */
 }
 
 .absolute-wrapper {
@@ -39,7 +39,7 @@ body, html {
   right: 0;
   max-width: 1200px;       /* Set the max-width to keep it from stretching too wide */
   margin: 0 auto;          /* Center the element horizontally */
-  z-index: 1000;           /* Ensure it stays above other content */
+  z-index: 10;           /* Ensure it stays above other content */
 }
 
 .section {

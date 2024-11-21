@@ -9,7 +9,7 @@
   border-radius: 999px; /* Rounded corners */
   padding: 10px 20px!important;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  z-index: 2000;
+  z-index: 20;
 }
 
 /* Logo Styling */
