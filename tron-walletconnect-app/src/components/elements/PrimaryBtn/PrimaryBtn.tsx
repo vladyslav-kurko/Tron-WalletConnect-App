@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from "react-modal";
 import CloseIcon from '@mui/icons-material/Close';
-import WalletConnect from '../../wallet-connect';
+// import WalletConnect from '../../wallet-connect';
 import TronConnectButton from '../../Tron/tron-connect-button'
 import { useWallet } from '@tronweb3/tronwallet-adapter-react-hooks';
 import './PrimaryBtn.css';
@@ -21,12 +21,13 @@ interface PrimaryBtnProps {
   justifyContent?: 'center' | 'space-between';
   style?: "blue" | "white";
   size?: 'medium' | 'small'
+  url?: string
 }
 
-const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent = 'center', style = "blue", size = "medium" }) => {
+const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent = 'center', style = "blue", size = "medium", url = null }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1);
-  const [transactionSigned, setTransactionSigned] = useState(false);
+  const [transactionSigned] = useState(false); //setTransactionSigned
   const { address: tronAddress, connected: tronConnected } = useWallet();
   const { isConnected: walletConnectConnected, address: ethAddress } = useAccount();
 
@@ -51,7 +52,12 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
   const stepBack = () => setStep(step - 1);
   
   const handleClick = () => {
-    openModal();
+    if (url != null) {
+      window.location.href = url;
+    }
+    else {
+      openModal();
+    }
   };
 
   const renderContent = () => {

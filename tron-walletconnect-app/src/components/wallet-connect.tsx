@@ -1,14 +1,14 @@
-import { TransferFundsButton } from './WalletConnect/WalletConnectTransferFundsButton'
+import WalletConnectTransferFundsButton from './WalletConnect/WalletConnectTransferFundsButton'
 import { WalletConnectButton } from './WalletConnect/wallet-connect-button'
-// import { WagmiStat } from './wagni-stat'
+import { WagmiStat } from './wagni-stat'
 
 export default function WalletConnect() {
     return (
       <div>
-        {/* <h1>Wallet Connect</h1> */}
+        <h1>Wallet Connect</h1>
         <WalletConnectButton />
-        {/* <WagmiStat /> */}
-        <TransferFundsButton />
+        <WagmiStat />
+        <WalletConnectTransferFundsButton>Transfer Funds</WalletConnectTransferFundsButton>
       </div>
     )
   }

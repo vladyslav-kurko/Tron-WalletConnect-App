@@ -12,9 +12,9 @@ import TronTransferFundsButton from './Tron/TronTransferFundsButton';
 export default function TronAdapterConnect() {
     return (
       <>
-          {/* <h1>Tron Connect</h1> */}
+          <h1>Tron Connect</h1>
           <TronConnectButton></TronConnectButton>
-              {/* <Profile></Profile> */}
+          <Profile></Profile>
           <TronTransferFundsButton>Trasfer Funds</TronTransferFundsButton>
       </>
     );
