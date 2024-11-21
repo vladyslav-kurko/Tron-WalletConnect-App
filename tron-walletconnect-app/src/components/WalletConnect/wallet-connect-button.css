@@ -1,0 +1,9 @@
+.wallet-connect-button {
+    width: 100%;
+    padding: 22px 0;
+    background-color: #0057FF;
+    border: none;
+    border-radius: 999px;
+    color: white;
+    font-size: 1.25rem;
+}

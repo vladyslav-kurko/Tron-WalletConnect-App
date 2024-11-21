@@ -1,0 +1,19 @@
+.tron-button {
+    width: 100%;
+}
+
+.tron-button .adapter-react-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 1.25rem;
+    padding: 13px 3rem;
+    border-radius: 999px;
+    font-weight: normal;
+    height: auto;
+    gap: 10px;
+}
+
+@media (max-width: 991.98px) {
+
+}

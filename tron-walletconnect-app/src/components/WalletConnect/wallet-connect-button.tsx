@@ -1,4 +1,5 @@
 import { useConnect, useDisconnect, useAccount } from 'wagmi'
+import "./wallet-connect-button.css"
 
 export function WalletConnectButton() {
   const { isConnected } = useAccount()
@@ -9,12 +10,15 @@ export function WalletConnectButton() {
 
   return (
     <div>
+      {/* <button className='wallet-connect-button' onClick={() => connect({ connector: walletConnectConnector })}>
+        Wallet Connect
+      </button> */}
       {isConnected ? (
-        <button onClick={() => disconnect()}>
+        <button className='wallet-connect-button' onClick={() => disconnect()}>
           Disconnect
         </button>
       ) : (
-        <button onClick={() => connect({ connector: walletConnectConnector })}>
+        <button className='wallet-connect-button' onClick={() => connect({ connector: walletConnectConnector })}>
           Wallet Connect
         </button>
       )}

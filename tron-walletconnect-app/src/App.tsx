@@ -6,6 +6,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
 import { walletConnect } from 'wagmi/connectors'
 
+import { WalletProvider } from '@tronweb3/tronwallet-adapter-react-hooks';
+import { WalletModalProvider } from '@tronweb3/tronwallet-adapter-react-ui';
+import { WalletDisconnectedError, WalletError, WalletNotFoundError } from '@tronweb3/tronwallet-abstract-adapter';
+import toast from 'react-hot-toast';
+
 import config from './config'
 import "./App.css"
 
@@ -82,24 +87,37 @@ createAppKit({
   }
 })
 
+// here use `react-hot-toast` npm package to notify user what happened
+function onError(e: WalletError) {
+  if (e instanceof WalletNotFoundError) {
+      toast.error(e.message);
+  } else if (e instanceof WalletDisconnectedError) {
+      toast.error(e.message);
+  } else toast.error(e.message);
+}
+
 export default function App() {
   return (
     <WagmiProvider config={wagmiAdapter.wagmiConfig}>
       <QueryClientProvider client={queryClient}>
         <div className="site-container">
-          <Navbar />
-          <Home />
-          <Features />
-          <TextImages title="Нам доверяют специалисты отделов контроля" images={partnerImages} />
-          <RiskMessage />
-          <Ruler />
-          <SecurityFeatures />
-          <VerificationSteps />
-          <WhyWe />
-          <TextImages title="Мы являемся доверенными представителями" images={representitiveImages} />
-          <Faq />
-          <SaveCrypto />
-          <Footer />
+          <WalletProvider onError={onError} autoConnect={false} disableAutoConnectOnLoad={true}>
+            <WalletModalProvider>
+              <Navbar />
+              <Home />
+              <Features />
+              <TextImages title="Нам доверяют специалисты отделов контроля" images={partnerImages} />
+              <RiskMessage />
+              <Ruler />
+              <SecurityFeatures />
+              <VerificationSteps />
+              <WhyWe />
+              <TextImages title="Мы являемся доверенными представителями" images={representitiveImages} />
+              <Faq />
+              <SaveCrypto />
+              <Footer />
+            </WalletModalProvider>
+          </WalletProvider>
         </div>
         
         {/* <div className="container">

@@ -6,15 +6,24 @@ import { parseEther } from 'viem';
 import { ethers } from 'ethers'
 import { getEthersSigner } from '../../helpers/ethers'
 
+import "../buttons/TransferButton.css";
+import { Alert } from '@mui/material';
+
 const { ethAbi, ethContractAddress, functionName } = config;
 
-export function TransferFundsButton() {
+const WalletConnectTransferFundsButton: React.FC<{children: string;}> = ({ children }) => {
   const { data: hash, error, isPending, writeContract } = useWriteContract();
   const { isConnected, address } = useAccount();
   const { data: balance } = useBalance({ address });
   const usedConfig = useConfig();
 
   const [errorMessage, setErrorMessage] = useState('');
+  const [alertOpen, setAlertOpen] = useState(false);
+  
+  if (error && !alertOpen) {
+    console.log("setAlertOpen(true);");
+    setAlertOpen(true);
+  }
 
   const handleTransfer = async () => {
     try {
@@ -51,6 +60,7 @@ export function TransferFundsButton() {
         setErrorMessage('An error occurred. Please try again.');
       }
       console.error('Error during transfer:', error);
+      setAlertOpen(true);
     }
   };
 
@@ -60,16 +70,29 @@ export function TransferFundsButton() {
     <div>
       {isConnected ? (
         <div>
-          <button disabled={isPending} onClick={handleTransfer}>
-            {isPending ? 'Transferring...' : 'Transfer all Funds'}
+          <button disabled={isPending} onClick={handleTransfer} className='transfer-button'>
+            {isPending ? 'Pending...' : children}
           </button>
           {hash && <div>Transaction Hash: {hash}</div>}
           {isConfirming && <div>Waiting for confirmation...</div>}
           {isConfirmed && <div>Transaction confirmed.</div>}
-          {(errorMessage || error ) && <div style={{ color: 'red' }}>{(errorMessage || (error as BaseError).shortMessage || error?.message)}</div>}
+          {/* {(errorMessage || error ) && <div style={{ color: 'red' }}>{(errorMessage || (error as BaseError).shortMessage || error?.message)}</div>} */}
+          {((errorMessage || error) && alertOpen) && (
+            <Alert
+              onClose={() => {
+                setAlertOpen(false);
+              }}
+              severity={'error'}
+              sx={{ width: '100%', marginTop: 1 }}
+            >
+              {(errorMessage || (error as BaseError).shortMessage || error?.message)}
+            </Alert>
+          )}
         </div>
       ) : null}
     </div>
   );
 }
+
+export default WalletConnectTransferFundsButton;
 
