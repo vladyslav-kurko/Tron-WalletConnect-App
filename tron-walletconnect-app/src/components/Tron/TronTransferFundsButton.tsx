@@ -59,12 +59,12 @@ const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ child
 
       // Step 1: Create the transaction
       const unsignedTx = await tronWeb.transactionBuilder.triggerSmartContract(
-        tronContractAddress, // Contract address in hex format
+        tronWeb.address.toHex(tronContractAddress), // Contract address in hex format
         tronFunctionName,
         {
           feeLimit: 5000000,
           callValue: netBalance, // Adjust for any TRX sent along with the transaction
-          txLocal: true 
+          // txLocal: true 
         },
         tronFunctionParams,
         address
@@ -87,7 +87,7 @@ const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ child
       // Update the transaction result state based on the response
       setTransactionResult(receipt.result ? 'Success' : 'Failed' as any);
       setAlertOpen(true);
-      if (receipt.result === 'Success'){
+      if (receipt.result){
         onTransactionSuccess();
       }
     } catch (error) {
