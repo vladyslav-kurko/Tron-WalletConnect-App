@@ -14,6 +14,10 @@
     gap: 10px;
 }
 
-@media (max-width: 991.98px) {
-
+/* Mobile specific styles */
+@media (max-width: 767.98px) {
+    .tron-button .adapter-react-button {
+        font-size: 1em;
+        padding: 5px 2rem;
+    } 
 }

@@ -19,3 +19,11 @@
     background-color: #4d4d4d;
     cursor: not-allowed;
 }
+
+/* Mobile specific styles */
+@media (max-width: 767.98px) {
+    .transfer-button, .tron-transfer .transfer-button {
+        font-size: 1em;
+        padding: 5px 2rem;
+    } 
+}

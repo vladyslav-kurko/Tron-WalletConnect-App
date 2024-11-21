@@ -36,6 +36,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 20px;
 }
 
 .logo {
@@ -164,3 +165,76 @@
   padding: 60px 40px 30px 40px;
 }
 
+
+/* Mobile specific styles */
+@media (max-width: 767.98px) {
+  /* Modal Content */
+  .modal-content {
+    background-color: white;
+    width: 95%!important;
+    padding: 70px 20px;
+  }
+
+  .logo {
+    width: auto;
+    height: 25px;
+  }
+
+  /* Step Indicator */
+  .popup-step {
+    font-size: 1rem;
+  }
+
+  .current-step {
+    font-size: 1rem;
+  }
+
+  .step {
+    font-size: 0.7rem;
+  }
+
+  .step-text {
+    margin-left: 5px;
+  }
+
+  .popup-title {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  .popup-subtitle {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    margin-top: 0.75rem;
+  }
+
+  .close-button {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .back-button {
+    font-size: 1rem;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  /* Third step */
+  .popup-result-score {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-weight:  bold;
+  }
+  
+  .popup-result-score-icon {
+    margin-top: 0.6rem;
+    margin-bottom: 5px;
+    width: 50px;
+    height: auto;
+  }
+  
+  .result-bars {
+    padding: 30px 20px 15px 20px;
+  }
+
+}

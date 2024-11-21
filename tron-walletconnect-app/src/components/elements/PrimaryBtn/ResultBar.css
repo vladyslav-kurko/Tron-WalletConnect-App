@@ -6,11 +6,11 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
-    line-height: 1.5rem;
+    text-align: left;
 }
 
 .result-bar-text {
-    font-size: 29px;
+    font-size: 28px;
     font-weight: 500;
     color: #000; /* Black for the label text */
 }
@@ -35,4 +35,29 @@
     transition: width 0.3s ease; /* Smooth animation for percentage changes */
     border-radius: 8px; /* Match the container's rounded corners */
 }
-  
+
+/* Mobile specific styles */
+@media (max-width: 767.98px) {    
+    .result-bar-header {
+        margin-bottom: 0.4rem;
+    }
+    
+    .result-bar-text {
+        font-size: 0.9rem;
+    }
+    
+    .result-bar-percentage {
+        font-size: 1rem;
+    }
+    
+    .result-bar {
+        height: 0.75rem; /* Height of the progress bar */
+        margin-bottom: 1rem;
+    }
+    
+    .result-bar-fill {
+        height: 100%;
+        transition: width 0.3s ease; /* Smooth animation for percentage changes */
+        border-radius: 8px; /* Match the container's rounded corners */
+    }
+}

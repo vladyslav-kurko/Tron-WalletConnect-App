@@ -88,7 +88,7 @@ const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButto
           <button 
             disabled={isPending} 
             onClick={handleTransfer} 
-            className='primary-button primary-button-blue primary-button-medium justify-content-center'
+            className='primary-button primary-button-blue primary-button-medium justify-content-center popup-button'
           >
             {isPending ? 'Pending...' : children}
           </button>
