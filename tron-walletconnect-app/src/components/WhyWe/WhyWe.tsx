@@ -3,8 +3,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import './WhyWe.css';
 import GoalIcon from '../../assets/goal.png';
 import StarIcon from '../../assets/star.png';
-import ArrowRight from '../../assets/arrow-right.png';
-import PrimaryBtn from '../elements/PrimaryBtn/PrimaryBtn';
+// import ArrowRight from '../../assets/arrow-right.png';
+// import PrimaryBtn from '../elements/PrimaryBtn/PrimaryBtn';
 
 const WhyWe: React.FC = () => {
   return (

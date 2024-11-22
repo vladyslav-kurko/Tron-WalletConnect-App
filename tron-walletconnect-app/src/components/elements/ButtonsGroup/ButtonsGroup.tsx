@@ -9,7 +9,7 @@ interface ButtonsGroupProps {
     secondaryColor?: 'white' | 'black';
 }
 
-const ButtonsGroup: React.FC<ButtonsGroupProps> = ({secondaryColor = "black"}) => {
+const ButtonsGroup: React.FC<ButtonsGroupProps> = () => { //{secondaryColor = "black"}
 // const ButtonsGroup: React.FC = () => {
     return (
         <div className="row justify-content-center align-items-center flex-wrap gx-5 gy-4">
