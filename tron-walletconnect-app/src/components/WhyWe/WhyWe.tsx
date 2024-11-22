@@ -45,7 +45,7 @@ const WhyWe: React.FC = () => {
                     </div>
                   </Col>
                 </Row>
-                <Row className='button-row'>
+                {/* <Row className='button-row'>
                     <Col xl={8}>
                         <PrimaryBtn
                             text="Давайте обсудим"
@@ -54,7 +54,7 @@ const WhyWe: React.FC = () => {
                             justifyContent="space-between" // Choose "center" or "space-between"
                         />
                     </Col>
-                </Row>
+                </Row> */}
               </Container>
             </div>
           </div> 
