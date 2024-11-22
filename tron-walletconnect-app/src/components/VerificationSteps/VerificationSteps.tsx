@@ -3,7 +3,7 @@ import './VerificationSteps.css';
 import PrimaryBtn from '../elements/PrimaryBtn/PrimaryBtn';
 import TelegramBlue from '../../assets/telegram-blue.png';
 import TelegramWhite from '../../assets/telegram-icon.png';
-import SecondaryBtn from '../elements/SecondaryBtn/SecondaryBtn';
+// import SecondaryBtn from '../elements/SecondaryBtn/SecondaryBtn';
 
 const VerificationSteps: React.FC = () => {
   return (

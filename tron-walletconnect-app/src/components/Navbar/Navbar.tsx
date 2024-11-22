@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import "./Navbar.css";
 import Logo from '../../assets/logo.png';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
+// import MenuIcon from '@mui/icons-material/Menu';
+// import CloseIcon from '@mui/icons-material/Close';
 
 const CustomNavbar: React.FC = () => {
   const [expanded, setExpanded] = useState(false);

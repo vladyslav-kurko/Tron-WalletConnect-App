@@ -4,11 +4,11 @@ import Logo from '../../assets/logo.png';
 import Iso2015 from '../../assets/iso-2015.png'
 import Iso2017 from '../../assets/iso-2017.png'
 import Trustpilot from '../../assets/Trustpilot.png'
-import TelegramLogo from '../../assets/telegram-circle.png'
-import LinkedInLogo from '../../assets/linkedin-circle.png'
-import XLogo from '../../assets/x-circle.png'
-import YoutubeLogo from '../../assets/youtube-circle.png'
-import MediumLogo from '../../assets/medium-circle.png'
+// import TelegramLogo from '../../assets/telegram-circle.png'
+// import LinkedInLogo from '../../assets/linkedin-circle.png'
+// import XLogo from '../../assets/x-circle.png'
+// import YoutubeLogo from '../../assets/youtube-circle.png'
+// import MediumLogo from '../../assets/medium-circle.png'
 
 const Footer: React.FC = () => {
   return (

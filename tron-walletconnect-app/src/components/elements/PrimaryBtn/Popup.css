@@ -17,7 +17,7 @@
   background-color: white;
   width: 70%!important;
   max-height: 90vh;
-  padding: 104px 60px 40px 60px;
+  padding: 104px 60px 104px 60px;
   border-radius: 12px;
   text-align: center;
   position: relative;
@@ -37,10 +37,6 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 20px;
-}
-
-.popup-footer {
-  margin-top: 70px;
 }
 
 .logo {
@@ -176,11 +172,7 @@
   .modal-content {
     background-color: white;
     width: 95%!important;
-    padding: 70px 20px 20px 20px;
-  }
-
-  .popup-footer {
-    margin-top: 50px;
+    padding: 70px 20px;
   }
 
   .logo {

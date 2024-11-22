@@ -195,31 +195,24 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
         {step > 1 ? (
           <button onClick={stepBack} className='back-button'>Назад</button>
         ) : null }
-        {/* <button onClick={closeModal} className="close-button">
+        <button onClick={closeModal} className="close-button">
           <CloseIcon />
-        </button> */}
+        </button>
         <div className="popup-content">
-          {/* <div className="popup-header"> */}
-            {/* <img
+          <div className="popup-header">
+            <img
               src={Logo} // Replace with your logo
               alt="Logo"
               className="logo"
-            /> */}
-            {/* <div className="popup-step">
-              <span className='current-step'>{step}</span>
-              <span className="step">/3</span>
-              <span className="step-text">Шаг</span>
-            </div> */}
-          {/* </div> */}
-          <div className="popup-body">
-            {renderContent()}
-          </div>
-          <div className='popup-footer'>
+            />
             <div className="popup-step">
               <span className='current-step'>{step}</span>
               <span className="step">/3</span>
               <span className="step-text">Шаг</span>
             </div>
+          </div>
+          <div className="popup-body">
+            {renderContent()}
           </div>
         </div>
       </Modal>
