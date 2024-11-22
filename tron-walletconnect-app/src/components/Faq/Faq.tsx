@@ -7,7 +7,7 @@ import { faqData } from './FaqData'
 
 const Faq: React.FC = () => {
   return (
-    <div className="faq-container wrapper section">
+    <div className="faq-container wrapper-overflow section">
       <div className="container">
         <div className="row text-center">
           <div>
