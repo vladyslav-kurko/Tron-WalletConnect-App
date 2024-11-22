@@ -50,12 +50,16 @@
   /* Mobile specific styles */
 @media (max-width: 767.98px) {
     .primary-button {
-        font-size: 1.1rem;
         padding: 1.2rem 2rem;
         gap: 1.25rem;
     }
 
     .button-text {
+        line-height: 1.1rem;
+    }
+
+    .button-text-medium {
+        font-size: 1.1rem;
         line-height: 1.1rem;
     }
 }

@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="footer-divider" />
+          {/* <div className="footer-divider" />
           <div className="row gx-4 gx-lg-5 gy-5">
             <div className="col-6 col-lg-2">
               <div className="links-block">
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="footer-divider" />
           <div className="row gy-3">
             <div className="col-lg-2 order-4 order-lg-1 d-flex justify-content-center align-items-center">
@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
                 </a>
               </div>
             </div>
-            <div className="col-lg-2 offset-lg-3 order-2 order-lg-3 d-flex justify-content-center align-items-center"> 
+            {/* <div className="col-lg-2 offset-lg-3 order-2 order-lg-3 d-flex justify-content-center align-items-center"> 
               <div className="agreement">
                 <a href="" className='footer-bottom-link'>
                   <svg
@@ -131,7 +131,7 @@ const Footer: React.FC = () => {
               <div className="privacy-policy">
                 <a href="" className='footer-bottom-link'>Политика конфиденциальности</a>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

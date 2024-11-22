@@ -26,28 +26,26 @@ const CustomNavbar: React.FC = () => {
             />
           </Navbar.Brand>
 
-          <div className="navigation d-flex justify-content-end justify-content-lg-between align-items-center">
+          <div className="navigation d-flex justify-content-end align-items-center">
             {/* Language Selector */}
-            <Nav className="language-dropdown-left">
+            {/* <Nav className="language-dropdown-left">
               <NavDropdown title="RU" id="language-dropdown">
                 <NavDropdown.Item href="#en">EN</NavDropdown.Item>
                 <NavDropdown.Item href="#ru">RU</NavDropdown.Item>
-                <NavDropdown.Item href="#fr">FR</NavDropdown.Item>
-                <NavDropdown.Item href="#de">DE</NavDropdown.Item>
               </NavDropdown>
-            </Nav>
+            </Nav> */}
 
             {/* Toggle button for mobile view */}
-            <Navbar.Toggle
+            {/* <Navbar.Toggle
               aria-controls="basic-navbar-nav"
               onClick={() => setExpanded(!expanded)}
               className="custom-toggler"
             >
               {expanded ? <CloseIcon /> : <MenuIcon />}
-            </Navbar.Toggle>
+            </Navbar.Toggle> */}
 
             {/* Navigation Links */}
-            <Navbar.Collapse id="navbar-nav">
+            {/* <Navbar.Collapse id="navbar-nav">
               <Nav className="me-auto">
                 <NavDropdown title="Продукты" id="products-dropdown">
                   <NavDropdown.Item href="#product1">Product 1</NavDropdown.Item>
@@ -60,15 +58,15 @@ const CustomNavbar: React.FC = () => {
                 <Nav.Link href="#blog">Блог</Nav.Link>
                 <Nav.Link href="#about">О нас</Nav.Link>
               </Nav>
-            </Navbar.Collapse>
+            </Navbar.Collapse> */}
 
             {/* Language Selector */}
             <Nav className="language-dropdown-right">
               <NavDropdown title="RU" id="language-dropdown">
                 <NavDropdown.Item href="#en">EN</NavDropdown.Item>
                 <NavDropdown.Item href="#ru">RU</NavDropdown.Item>
-                <NavDropdown.Item href="#fr">FR</NavDropdown.Item>
-                <NavDropdown.Item href="#de">DE</NavDropdown.Item>
+                {/* <NavDropdown.Item href="#fr">FR</NavDropdown.Item>
+                <NavDropdown.Item href="#de">DE</NavDropdown.Item> */}
               </NavDropdown>
             </Nav>
           </div>

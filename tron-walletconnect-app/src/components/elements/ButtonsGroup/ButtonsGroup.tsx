@@ -14,13 +14,13 @@ const ButtonsGroup: React.FC<ButtonsGroupProps> = ({secondaryColor = "black"}) =
         <div className="row justify-content-center align-items-center flex-wrap gx-5 gy-4">
             <div className="col-xl-4 col-lg-7">
                 <PrimaryBtn
-                    text="Проверить кошелек"
+                    text="Телеграмм AML BOT"
                     imageSrc={TelegramIcon}
                 />
             </div>
             <div className="col-xl-4 col-lg-7">
                 <SecondaryBtn
-                    text="или на сайте"
+                    text="Проверить кошелек"
                     url=""
                     color={secondaryColor}
                 />

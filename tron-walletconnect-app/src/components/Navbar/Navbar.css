@@ -81,9 +81,9 @@
   color: #0056b3;
 }
 
-.language-dropdown-left {
+/* .language-dropdown-left {
   display: none!important;
-}
+} */
 
 .custom-toggler {
   border: none!important;
@@ -106,13 +106,13 @@
     width: auto;
   }
 
-  .language-dropdown-left {
+  /* .language-dropdown-left {
     display: block!important;
   }
 
   .language-dropdown-right {
     display: none!important;
-  }
+  } */
 
   .navigation .navbar-collapse {
     position: absolute;

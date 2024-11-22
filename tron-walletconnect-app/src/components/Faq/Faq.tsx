@@ -14,7 +14,7 @@ const Faq: React.FC = () => {
             <h2 className="col faq-title">FAQs</h2>
           </div>
         </div>
-        <div className="row gx-5 gy-5">
+        <div className="row gy-5 gx-5">
           <div className="col-lg-4 order-2 order-lg-1 ">
             <div className="contact-us">
               <h4 className='contact-us-title'>Вашего вопроса нет в списке?</h4>

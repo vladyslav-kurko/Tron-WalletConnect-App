@@ -62,4 +62,14 @@
     .icon-button-space-between {
         justify-content: center;
     }
+
+    .icon-button-text-medium {
+        font-size: 1.1rem;
+    }
+
+    .icon-button-svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        vertical-align: middle;
+    }
 }
