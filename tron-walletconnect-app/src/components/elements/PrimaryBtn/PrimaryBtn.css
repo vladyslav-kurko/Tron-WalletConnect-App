@@ -46,6 +46,11 @@
     line-height: 1rem;
 }
 
+.button-icon {
+    height: 24px;
+    width: auto;
+}
+
 /* Mobile specific styles */
 @media (max-width: 767.98px) {
     .primary-button {

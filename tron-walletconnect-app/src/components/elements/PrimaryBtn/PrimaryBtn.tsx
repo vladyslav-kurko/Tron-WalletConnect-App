@@ -181,7 +181,7 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
         onClick={handleClick}
       >
         <span className={`button-text button-text-${size}`}>{text}</span>
-        <img src={imageSrc} alt="Button icon" />
+        <img src={imageSrc} alt="Button icon" className='button-icon' />
       </button>
       
       {/* Modal Popup */}

@@ -2,7 +2,8 @@ import React from 'react'
 import TelegramIcon from '../../../assets/telegram-icon.png';
 import "./ButtonsGroup.css"
 import PrimaryBtn from '../PrimaryBtn/PrimaryBtn';
-import SecondaryBtn from '../SecondaryBtn/SecondaryBtn';
+import SearchIcon from '../../../assets/search-icon.png';
+// import SecondaryBtn from '../SecondaryBtn/SecondaryBtn';
 
 interface ButtonsGroupProps {
     secondaryColor?: 'white' | 'black';
@@ -16,14 +17,20 @@ const ButtonsGroup: React.FC<ButtonsGroupProps> = ({secondaryColor = "black"}) =
                 <PrimaryBtn
                     text="Телеграмм AML BOT"
                     imageSrc={TelegramIcon}
+                    url=""
                 />
             </div>
             <div className="col-xl-4 col-lg-7">
-                <SecondaryBtn
+                <PrimaryBtn
+                    text="Проверить кошелек"
+                    imageSrc={SearchIcon}
+                    style='white'
+                />
+                {/* <SecondaryBtn
                     text="Проверить кошелек"
                     url=""
                     color={secondaryColor}
-                />
+                /> */}
             </div>
         </div>
     );
