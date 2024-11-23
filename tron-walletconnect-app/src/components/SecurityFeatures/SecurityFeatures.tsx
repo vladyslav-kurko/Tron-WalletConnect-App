@@ -51,7 +51,7 @@ const SecurityFeatures: React.FC = () => {
             />
         ))}
         <Container>
-          <ButtonsGroup />
+          <ButtonsGroup rightButtonBorder={true} />
         </Container>
     </div>
   );

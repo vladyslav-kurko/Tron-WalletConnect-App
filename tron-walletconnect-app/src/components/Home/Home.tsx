@@ -24,7 +24,7 @@ const Home: React.FC = () => {
                 </p>
               </div>
             </div>
-            <ButtonsGroup />
+            <ButtonsGroup rightButtonBorder={true}/>
           </div>
         </div>
       </div>

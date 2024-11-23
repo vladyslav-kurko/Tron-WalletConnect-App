@@ -69,6 +69,10 @@
    padding-top: 30px;
 }
 
+.first-mobile-button, .second-mobile-button {
+  display: none;
+}
+
 /* Separator styles */
 .separator {
   display: flex;
@@ -131,5 +135,14 @@
   }
   .step {
     flex-direction: column;
+  }
+
+  .buttons {
+    padding-top: 30px;
+    display: none;
+  }
+
+  .first-mobile-button, .second-mobile-button {
+    display: block;
   }
 }

@@ -29,6 +29,9 @@ const VerificationSteps: React.FC = () => {
                   </div>
                 </div>
               </div>
+              <div className="col-xl-3 col-lg-6 col-md-12 first-mobile-button">
+                  <PrimaryBtn text="Телеграмм AML bot" imageSrc={TelegramBlue} url="" style='white' />
+              </div>
               <div className="col-xl-3 col-lg-6 col-md-12 second-step">
                 <div className="step">
                   <div className="step-title step-two">
@@ -55,6 +58,9 @@ const VerificationSteps: React.FC = () => {
                     justifyContent='space-between'
                     size='small'
                   /> */}
+              </div>
+              <div className="col-xl-3 col-lg-6 col-md-12 second-mobile-button">
+                <PrimaryBtn text="Тех. поддержка" imageSrc={TelegramWhite} url=""/>
               </div>
             </div>
           </div>

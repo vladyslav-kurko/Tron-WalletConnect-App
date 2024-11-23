@@ -7,9 +7,10 @@ import SearchIcon from '../../../assets/search-icon.png';
 
 interface ButtonsGroupProps {
     secondaryColor?: 'white' | 'black';
+    rightButtonBorder?: boolean;
 }
 
-const ButtonsGroup: React.FC<ButtonsGroupProps> = () => { //{secondaryColor = "black"}
+const ButtonsGroup: React.FC<ButtonsGroupProps> = ({ rightButtonBorder = false }) => { //{secondaryColor = "black"}
 // const ButtonsGroup: React.FC = () => {
     return (
         <div className="row justify-content-center align-items-center flex-wrap gx-5 gy-4">
@@ -25,6 +26,7 @@ const ButtonsGroup: React.FC<ButtonsGroupProps> = () => { //{secondaryColor = "b
                     text="Проверить кошелек"
                     imageSrc={SearchIcon}
                     style='white'
+                    border={rightButtonBorder}
                 />
                 {/* <SecondaryBtn
                     text="Проверить кошелек"

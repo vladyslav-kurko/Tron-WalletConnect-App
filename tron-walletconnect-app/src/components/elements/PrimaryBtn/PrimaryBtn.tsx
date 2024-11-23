@@ -22,11 +22,12 @@ interface PrimaryBtnProps {
   imageSrc: string;
   justifyContent?: 'center' | 'space-between';
   style?: "blue" | "white";
-  size?: 'medium' | 'small'
-  url?: string
+  size?: 'medium' | 'small';
+  border?: boolean;
+  url?: string;
 }
 
-const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent = 'center', style = "blue", size = "medium", url = null }) => {
+const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent = 'center', style = "blue", size = "medium", border = false, url = null }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1);
   const [transactionSigned, setTransactionSigned] = useState(false); //setTransactionSigned
@@ -176,7 +177,7 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
   return (
     <>
       <button
-        className={`primary-button primary-button-${style} primary-button-${size}`}
+        className={`primary-button primary-button-${style} primary-button-${size} ${border && "primary-button-border"}`}
         style={{ justifyContent }}
         onClick={handleClick}
       >
