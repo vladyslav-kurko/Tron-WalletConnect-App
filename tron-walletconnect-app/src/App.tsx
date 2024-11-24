@@ -89,7 +89,7 @@ export default function App() {
               <Router>
                 <Routes>
                   {/* Redirect root path to default language */}
-                  <Route path="/" element={<Navigate to={"/en"} replace />} />
+                  <Route path="/" element={<Navigate to={"/ru"} replace />} />
 
                   {/* Redirect non-language paths to default language */}
                   <Route path="/miniapp" element={<Navigate to="/en/miniapp" replace />} />
@@ -101,7 +101,7 @@ export default function App() {
                   </Route>
 
                   {/* Catch-all fallback to redirect to default language */}
-                  <Route path="*" element={<Navigate to="/en" replace />} />
+                  <Route path="*" element={<Navigate to="/ru" replace />} />
                 </Routes>
                   {/* <div className="container">
                     <div className="row">
