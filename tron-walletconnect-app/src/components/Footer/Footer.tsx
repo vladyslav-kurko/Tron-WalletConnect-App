@@ -10,6 +10,8 @@ import Trustpilot from '../../assets/Trustpilot.png'
 // import YoutubeLogo from '../../assets/youtube-circle.png'
 // import MediumLogo from '../../assets/medium-circle.png'
 
+import linksConfig from '../../linksConfig';
+
 const Footer: React.FC = () => {
   return (
     <div className="footer-section wrapper-overflow section">
@@ -96,7 +98,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="col-lg-2 order-1 order-lg-2 d-flex justify-content-center align-items-center">
               <div className="support-button">
-                <a className="footer-support-button" href=''>
+                <a className="footer-support-button" href={linksConfig.support}>
                   <svg 
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16" 

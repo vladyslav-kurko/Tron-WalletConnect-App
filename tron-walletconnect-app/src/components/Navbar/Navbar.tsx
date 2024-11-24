@@ -76,14 +76,12 @@ const CustomNavbar: React.FC = () => {
             </Navbar.Collapse> */}
 
             {/* Language Selector */}
-            <Nav className="language-dropdown-right">
+            {/* <Nav className="language-dropdown-right">
               <NavDropdown title={i18n.language.toUpperCase()} id="language-dropdown">
                 <NavDropdown.Item onClick={() => handleLanguageChange("en")} >EN</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => handleLanguageChange("ru")}>RU</NavDropdown.Item>
-                {/* <NavDropdown.Item href="#fr">FR</NavDropdown.Item>
-                <NavDropdown.Item href="#de">DE</NavDropdown.Item> */}
               </NavDropdown>
-            </Nav>
+            </Nav> */}
           </div>
         </Container>
       </Navbar>

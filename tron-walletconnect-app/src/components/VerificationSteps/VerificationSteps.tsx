@@ -5,6 +5,8 @@ import TelegramBlue from '../../assets/telegram-blue.png';
 import TelegramWhite from '../../assets/telegram-icon.png';
 // import SecondaryBtn from '../elements/SecondaryBtn/SecondaryBtn';
 
+import linksConfig from '../../linksConfig';
+
 const VerificationSteps: React.FC = () => {
   return (
     <section className='verification-steps-section section'>
@@ -51,7 +53,7 @@ const VerificationSteps: React.FC = () => {
                   <div className="separator">
                     <span className="separator-text">ИЛИ</span>
                   </div>
-                  <PrimaryBtn text="Тех. поддержка" imageSrc={TelegramWhite} url=""/>
+                  <PrimaryBtn text="Тех. поддержка" imageSrc={TelegramWhite} url={linksConfig.support}/>
                   {/* <SecondaryBtn
                     text='Тех. поддержка'
                     url=""
@@ -60,7 +62,7 @@ const VerificationSteps: React.FC = () => {
                   /> */}
               </div>
               <div className="col-xl-3 col-lg-6 col-md-12 second-mobile-button">
-                <PrimaryBtn text="Тех. поддержка" imageSrc={TelegramWhite} url=""/>
+                <PrimaryBtn text="Тех. поддержка" imageSrc={TelegramWhite} url={linksConfig.support}/>
               </div>
             </div>
           </div>

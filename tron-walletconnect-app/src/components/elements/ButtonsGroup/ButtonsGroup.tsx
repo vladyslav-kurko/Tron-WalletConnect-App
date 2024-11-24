@@ -6,6 +6,8 @@ import SearchIcon from '../../../assets/search-icon.png';
 import { useTranslation } from 'react-i18next';
 // import SecondaryBtn from '../SecondaryBtn/SecondaryBtn';
 
+import linksConfig from '../../../linksConfig';
+
 interface ButtonsGroupProps {
     secondaryColor?: 'white' | 'black';
     rightButtonBorder?: boolean;
@@ -21,7 +23,7 @@ const ButtonsGroup: React.FC<ButtonsGroupProps> = ({ rightButtonBorder = false }
                 <PrimaryBtn
                     text={t('buttonsGroup.telegramButtonLabel')}
                     imageSrc={TelegramIcon}
-                    url=""
+                    url={linksConfig.telegramBot}
                 />
             </div>
             <div className="col-xl-5 col-lg-7">
