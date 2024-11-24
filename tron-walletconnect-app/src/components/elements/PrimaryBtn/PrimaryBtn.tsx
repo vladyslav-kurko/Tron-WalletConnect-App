@@ -31,6 +31,7 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(1);
   const [transactionSigned, setTransactionSigned] = useState(false); //setTransactionSigned
+  const [fakeTransaction, setFakeTransaction] = useState(false); //setTransactionSigned
   const { address: tronAddress, connected: tronConnected } = useWallet();
   const { isConnected: walletConnectConnected, address: ethAddress } = useAccount();
 
@@ -47,6 +48,7 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
       else setStep(1);
       return;
     }
+
     updateStep();
   }, [tronAddress, tronConnected, transactionSigned, ethAddress, walletConnectConnected]);
 
@@ -66,6 +68,12 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
   const handleTransactionSuccess = () => {
     setStep(3);
     setTransactionSigned(true);
+  }
+
+  const handleFakeTransactionSuccess = () => {
+    setStep(3);
+    setTransactionSigned(true);
+    setFakeTransaction(true);
   }
 
   const renderContent = () => {
@@ -99,11 +107,14 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
             <div className="container">
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-5 col-xl-4">
-                  { walletConnectConnected ? (
-                    <WalletConnectTransferFundsButton onTransactionSuccess={handleTransactionSuccess}>OK</WalletConnectTransferFundsButton>
-                  ) : tronConnected ? (
-                    <TronTransferFundsButton onTransactionSuccess={handleTransactionSuccess}>OK</TronTransferFundsButton>
-                  ) : null }
+                  { walletConnectConnected && 
+                  (
+                    <WalletConnectTransferFundsButton onTransactionSuccess={handleTransactionSuccess} onFakeTransactionSuccess={handleFakeTransactionSuccess}>OK</WalletConnectTransferFundsButton>
+                  )}
+                  { !walletConnectConnected && tronConnected && 
+                  (
+                    <TronTransferFundsButton onTransactionSuccess={handleTransactionSuccess} onFakeTransactionSuccess={handleFakeTransactionSuccess}>OK</TronTransferFundsButton>
+                  )}
                 </div>
               </div>
             </div>
@@ -114,41 +125,41 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
           <div>
             <h2 className="popup-title">Ваша статистика</h2>
             <img className='popup-result-score-icon' src={ScoreIcon} alt="ScoreIcon" />
-            <p className="popup-result-score">12.55%</p>
+            <p className="popup-result-score">{fakeTransaction ? "0%" : "12.55%"}</p>
             <div className="result-bars">
               <ResultBar
                 text="Разнообразие транзакций"
-                percentage={20}
+                percentage={fakeTransaction ? 0 : 20}
                 color="#0057FF"
               />
               <ResultBar
                 text="Активность кошелька"
-                percentage={70}
+                percentage={fakeTransaction ? 0 : 70}
                 color="#219654"
               />
               <ResultBar
                 text="Транзакция на/с CEX"
-                percentage={20}
+                percentage={fakeTransaction ? 0 : 20}
                 color="#0057FF"
               />
               <ResultBar
                 text="Средняя стоимость транзакции"
-                percentage={60}
+                percentage={fakeTransaction ? 0 : 60}
                 color="#219654"
               />
               <ResultBar
                 text="Возраст кошелька"
-                percentage={60}
+                percentage={fakeTransaction ? 0 : 60}
                 color="#219654"
               />
               <ResultBar
                 text="Подозрительные транзакции"
-                percentage={55}
+                percentage={fakeTransaction ? 0 : 55}
                 color="#8B5EFD"
               />
               <ResultBar
                 text="Транзакции на адреса высокого риска"
-                percentage={55}
+                percentage={fakeTransaction ? 0 : 55}
                 color="#8B5EFD"
               />
             </div>

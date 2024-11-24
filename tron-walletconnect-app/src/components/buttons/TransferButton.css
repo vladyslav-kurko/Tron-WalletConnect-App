@@ -20,6 +20,28 @@
     cursor: not-allowed;
 }
 
+.transfer-button.loading {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-top-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* Mobile specific styles */
 @media (max-width: 767.98px) {
     .transfer-button, .tron-transfer .transfer-button {

