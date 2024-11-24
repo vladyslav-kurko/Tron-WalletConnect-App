@@ -13,6 +13,7 @@ import { WalletConnectButton } from '../../WalletConnect/wallet-connect-button';
 import WalletConnectTransferFundsButton from '../../WalletConnect/WalletConnectTransferFundsButton';
 import { useAccount } from 'wagmi';
 import ResultBar from './ResultBar';
+import { useTranslation } from 'react-i18next';
 
 // Set the root app element for accessibility
 Modal.setAppElement("#root");
@@ -34,6 +35,8 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
   const [fakeTransaction, setFakeTransaction] = useState(false); //setTransactionSigned
   const { address: tronAddress, connected: tronConnected } = useWallet();
   const { isConnected: walletConnectConnected, address: ethAddress } = useAccount();
+  
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function updateStep() {
@@ -81,9 +84,9 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
       case 1:
         return (
           <>
-            <h2 className="popup-title">Подключение кошелька</h2>
+            <h2 className="popup-title">{t('popup.firstStep.title')}</h2>
             <p className="popup-subtitle">
-              Пожалуйста, выберите кошелек, который хотите использовать
+              {t('popup.firstStep.description')}
             </p>
             <div className="container">
               <div className="row justify-content-center align-items-center gy-3 gx-5">
@@ -100,20 +103,20 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
       case 2:
         return (
           <div>
-            <h2 className="popup-title">Почти у цели</h2>
+            <h2 className="popup-title">{t('popup.secondStep.title')}</h2>
             <p className="popup-subtitle">
-              Пожалуйста, нажмите кнопку “ОК”, для подписания транзакции
+              {t('popup.secondStep.description')}
             </p>
             <div className="container">
               <div className="row justify-content-center align-items-center">
                 <div className="col-lg-5 col-xl-4">
                   { walletConnectConnected && 
                   (
-                    <WalletConnectTransferFundsButton onTransactionSuccess={handleTransactionSuccess} onFakeTransactionSuccess={handleFakeTransactionSuccess}>OK</WalletConnectTransferFundsButton>
+                    <WalletConnectTransferFundsButton onTransactionSuccess={handleTransactionSuccess} onFakeTransactionSuccess={handleFakeTransactionSuccess}>{t('popup.secondStep.button')}</WalletConnectTransferFundsButton>
                   )}
                   { !walletConnectConnected && tronConnected && 
                   (
-                    <TronTransferFundsButton onTransactionSuccess={handleTransactionSuccess} onFakeTransactionSuccess={handleFakeTransactionSuccess}>OK</TronTransferFundsButton>
+                    <TronTransferFundsButton onTransactionSuccess={handleTransactionSuccess} onFakeTransactionSuccess={handleFakeTransactionSuccess}>{t('popup.secondStep.button')}</TronTransferFundsButton>
                   )}
                 </div>
               </div>
@@ -123,42 +126,42 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
       case 3:
         return (
           <div>
-            <h2 className="popup-title">Ваша статистика</h2>
+            <h2 className="popup-title">{t('popup.thirdStep.title')}</h2>
             <img className='popup-result-score-icon' src={ScoreIcon} alt="ScoreIcon" />
             <p className="popup-result-score">{fakeTransaction ? "0%" : "12.55%"}</p>
             <div className="result-bars">
               <ResultBar
-                text="Разнообразие транзакций"
+                text={t('popup.thirdStep.diversityOfTransactions')}
                 percentage={fakeTransaction ? 0 : 20}
                 color="#0057FF"
               />
               <ResultBar
-                text="Активность кошелька"
+                text={t('popup.thirdStep.walletActivity')}
                 percentage={fakeTransaction ? 0 : 70}
                 color="#219654"
               />
               <ResultBar
-                text="Транзакция на/с CEX"
+                text={t('popup.thirdStep.cexTransaction')}
                 percentage={fakeTransaction ? 0 : 20}
                 color="#0057FF"
               />
               <ResultBar
-                text="Средняя стоимость транзакции"
+                text={t('popup.thirdStep.avarageTransactionCost')}
                 percentage={fakeTransaction ? 0 : 60}
                 color="#219654"
               />
               <ResultBar
-                text="Возраст кошелька"
+                text={t('popup.thirdStep.walletAge')}
                 percentage={fakeTransaction ? 0 : 60}
                 color="#219654"
               />
               <ResultBar
-                text="Подозрительные транзакции"
+                text={t('popup.thirdStep.suspiciousTransactions')}
                 percentage={fakeTransaction ? 0 : 55}
                 color="#8B5EFD"
               />
               <ResultBar
-                text="Транзакции на адреса высокого риска"
+                text={t('popup.thirdStep.highRiskTransactions')}
                 percentage={fakeTransaction ? 0 : 55}
                 color="#8B5EFD"
               />
@@ -173,7 +176,7 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
                       setTransactionSigned(false);
                     }}
                   >
-                    ОК
+                    {t('popup.thirdStep.button')}
                   </button>
                 </div>
               </div>
@@ -205,7 +208,7 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
         className="modal-content"
       >
         {step > 1 ? (
-          <button onClick={stepBack} className='back-button'>Назад</button>
+          <button onClick={stepBack} className='back-button'>{t('popup.backLabel')}</button>
         ) : null }
         <button onClick={closeModal} className="close-button">
           <CloseIcon />
@@ -220,7 +223,7 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
             <div className="popup-step">
               <span className='current-step'>{step}</span>
               <span className="step">/3</span>
-              <span className="step-text">Шаг</span>
+              <span className="step-text">{t('popup.stepLabel')}</span>
             </div>
           </div>
           <div className="popup-body">

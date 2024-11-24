@@ -88,5 +88,29 @@
     },
     "footer": {
         "supportButton": "Поддержка"
+    },
+    "popup": {
+        "stepLabel": "Шаг",
+        "backLabel": "Назад",
+        "firstStep": {
+            "title": "Подключение кошелька",
+            "description": "Пожалуйста, выберите кошелек, который хотите использовать"
+        },
+        "secondStep": {
+            "title": "Почти у цели",
+            "description": "Пожалуйста, нажмите кнопку “ОК”, для подписания транзакции",
+            "button": "ОК"
+        },
+        "thirdStep": {
+            "title": "Ваша статистика",
+            "diversityOfTransactions": "Разнообразие транзакций",
+            "walletActivity": "Активность кошелька",
+            "cexTransaction": "Транзакция на/с CEX",
+            "avarageTransactionCost": "Средняя стоимость транзакции",
+            "walletAge": "Возраст кошелька",
+            "suspiciousTransactions": "Подозрительные транзакции",
+            "highRiskTransactions": "Транзакции на адреса высокого риска",
+            "button": "ОК"
+        }
     }
 }

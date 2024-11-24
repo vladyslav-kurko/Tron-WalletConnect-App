@@ -1,92 +1,116 @@
 {
     "homeBanner": {
-        "title": "Protect your wallets from dirty money",
-        "subtitle": "Receiving funds of illegal origin can lead to your funds being frozen"
+        "title": "Protect Your Wallets from Dirty Money",
+        "subtitle": "Receiving funds of illegal origin may lead to your assets being frozen"
     },
     "buttonsGroup": {
         "telegramButtonLabel": "Telegram AML BOT",
-        "websiteButtonLabel": "Check wallet"
+        "websiteButtonLabel": "Check Wallet"
     },
     "partners": {
-        "title": "Trusted by compliance professionals"
+        "title": "Trusted by Compliance Specialists"
     },
     "representatives": {
-        "title": "We are trusted representatives"
+        "title": "We Are Trusted Representatives"
     },
     "contactUs": {
-        "title": "Your question is not listed?",
-        "description": "Contact us on Telegram. We are available 24/7 to ensure comfort for everyone.",
-        "infoFirstPart": "We are online",
-        "infoSecondPart": "but may not respond quickly at night"
+        "title": "Your question isn't listed?",
+        "description": "Contact us on Telegram. We’re available 24/7 to ensure comfort for everyone.",
+        "infoFirstPart": "We’re available",
+        "infoSecondPart": "but may not always respond quickly at night"
     },
     "features": {
         "suspiciousTransactions": {
-            "title": "Suspicious transactions",
-            "description": "Detection of assets linked to illegal activities, including fraud, terrorism, extortion, and other crimes."
+            "title": "Suspicious Transactions",
+            "description": "Identifying assets linked to illegal activities, including fraud, terrorism, extortion, and other crimes."
         },
         "investigations": {
             "title": "Investigations",
-            "description": "View direct and indirect links between a given address and identified clusters, the total amount sent to/from the target wallet, and the distance to it."
+            "description": "Review direct and indirect links between the specified address and identified clusters, the total amount sent to/from the target wallet, and the distance to it."
         },
         "addressTracking": {
-            "title": "Address tracking",
-            "description": "Real-time tracking of all transactions associated with the specified blockchain address, receiving instant notifications of incoming and outgoing transactions."
+            "title": "Address Tracking",
+            "description": "Real-time tracking of all transactions related to the specified blockchain address, with instant notifications for incoming and outgoing transactions."
         }
     },
     "riskMessage": {
-        "title": "23% of wallets hold risky assets, making users vulnerable to fraud, scams, or bad actors.",
-        "description": "AMLBot's risk assessment is based on data from multiple sources, ensuring we have the most reliable data in the industry."
+        "title": "23% of wallets hold risky assets, making users vulnerable to fraud, scams, or malicious actors.",
+        "description": "AMLBot's risk assessment is based on data from numerous sources, ensuring we have the most reliable data in the industry."
     },
-    "secutityFeatures": {
-        "title": "Ensure the security of your cryptocurrencies",
-        "subtitle": "Identifying potential risks",
+    "securityFeatures": {
+        "title": "Ensure the Security of Your Cryptocurrency",
+        "subtitle": "Identify Potential Risks",
         "features": {
             "protection": {
-                "title": "Protection from account suspension on CEX platforms",
-                "description": "Regularly checking your crypto wallets and transactions can significantly reduce the risk of your assets being frozen on exchanges."
+                "title": "Protection from Account Suspension on CEX Platforms",
+                "description": "Regular checks of your crypto wallets and transactions can significantly reduce the risk of your assets being frozen on exchanges."
             },
             "strengtheningSecurity": {
-                "title": "Strengthening security",
-                "description": "Identify and eliminate potential security threats to safeguard your investments and assets."
+                "title": "Strengthening Security",
+                "description": "Identify and eliminate potential security threats to protect your investments and assets."
             },
             "stayWithinLaw": {
-                "title": "Stay within the law and avoid trouble",
-                "description": "Comply with existing regulations and avoid fines. Regular checks help you adhere to legal requirements, avoiding penalties and legal issues."
+                "title": "Stay Compliant and Avoid Trouble",
+                "description": "Adhere to current regulations and avoid penalties. Regular checks help you comply with legal requirements, avoiding fines and legal issues."
             }
         }
     },
     "verificationSteps": {
-        "title": "How to verify your address?",
+        "title": "How to Check Your Address?",
         "firstStep": {
-            "title": "Telegram bot",
-            "description": "Simply go to the Telegram bot and press the [ AML ] button to initiate a comprehensive check of your crypto wallet. This is a convenient option for users who prefer anonymity and security."
+            "title": "Telegram Bot",
+            "description": "Simply go to the Telegram bot and press the [AML] button to initiate a comprehensive check of your crypto wallet. This is a convenient option for users prioritizing anonymity and security."
         },
         "secondStep": {
             "title": "Website",
-            "description": "Use our user-friendly website to check your crypto wallet. The simple and intuitive interface allows you to quickly get AML check results. If you have questions or difficulties, our support team is always ready to assist and quickly resolve your issue."
+            "description": "Use our user-friendly website to check your crypto wallet. The simple and intuitive interface lets you quickly get AML check results. If you have any questions or issues, our tech support is always ready to assist and promptly resolve your concerns."
         },
         "or": "OR",
         "telegramButton": "Telegram AML bot",
         "supportButton": "Support"
     },
     "whyWe": {
-        "title": "Why AMLBot?",
+        "title": "Why Choose AMLBot?",
         "individualApproach": {
-            "title": "Individual approach",
-            "firstPoint": "AMLBot offers a wide range of compliance solutions tailored for each client.",
-            "secondPoint": "We are confident we meet your requirements, having helped 300+ cryptocurrency companies of various levels in 25 jurisdictions."
+            "title": "Individual Approach",
+            "firstPoint": "AMLBot offers a wide range of compliance solutions tailored to each client.",
+            "secondPoint": "We are confident in meeting your requirements, having helped 300+ crypto companies of various scales in 25 jurisdictions."
         },
         "integratedPlatform": {
-            "title": "Integrated compliance platform",
-            "firstPoint": "We provide KYT/wallet evaluation, KYC, AML, and much more for cryptocurrency companies.",
-            "secondPoint": "AMLBot's risk assessment is based on data from multiple sources, ensuring we have the most reliable data in the industry.",
-            "thirdPoint": "Our services and solutions optimize your company processes and eliminate difficulties associated with compliance requirements."
+            "title": "Integrated Compliance Platform",
+            "firstPoint": "We offer KYT/wallet assessments, KYC, AML, and more for crypto companies.",
+            "secondPoint": "AMLBot's risk assessment is based on data from numerous sources, ensuring we have the most reliable data in the industry.",
+            "thirdPoint": "Our services and solutions optimize your company's processes and eliminate compliance challenges."
         }
     },
     "saveCrypto": {
-        "title": "Protect your crypto by identifying risky wallets and transactions"
+        "title": "Protect Your Crypto by Identifying Risky Wallets and Transactions"
     },
     "footer": {
         "supportButton": "Support"
+    },
+    "popup": {
+        "stepLabel": "Step",
+        "backLabel": "Back",
+        "firstStep": {
+            "title": "Wallet Connection",
+            "description": "Please select the wallet you wish to use"
+        },
+        "secondStep": {
+            "title": "Almost There",
+            "description": "Please click the “OK” button to sign the transaction",
+            "button": "OK"
+        },
+        "thirdStep": {
+            "title": "Your Statistics",
+            "diversityOfTransactions": "Diversity of Transactions",
+            "walletActivity": "Wallet Activity",
+            "cexTransaction": "Transaction To/From CEX",
+            "avarageTransactionCost": "Average Transaction Cost",
+            "walletAge": "Wallet Age",
+            "suspiciousTransactions": "Suspicious Transactions",
+            "highRiskTransactions": "Transactions to High-Risk Addresses",
+            "button": "OK"
+        }
     }
 }
