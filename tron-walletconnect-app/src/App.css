@@ -18,8 +18,3 @@ body, html {
   --bs-modal-bg: white;
   --bs-modal-border-radius: 1rem;
 }
-
-.site-container {
-  display: flex;
-  flex-direction: column;
-}

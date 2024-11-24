@@ -1,0 +1,16 @@
+{
+    "homeBanner": {
+        "title": "Protecting your wallets from dirty money",
+        "subtitle": "Receiving funds of illegal origin may result in your funds being frozen."
+    },
+    "buttonsGroup": {
+        "telegramButtonLabel": "Telegram AML BOT",
+        "websiteButtonLabel": "Check wallet"
+    },
+    "partners": {
+        "title": "We are trusted by control department specialists"
+    },
+    "representatives" : {
+        "title": "We are trusted representatives"
+    }
+}

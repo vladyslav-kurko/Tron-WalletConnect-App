@@ -3,6 +3,7 @@ import TelegramIcon from '../../../assets/telegram-icon.png';
 import "./ButtonsGroup.css"
 import PrimaryBtn from '../PrimaryBtn/PrimaryBtn';
 import SearchIcon from '../../../assets/search-icon.png';
+import { useTranslation } from 'react-i18next';
 // import SecondaryBtn from '../SecondaryBtn/SecondaryBtn';
 
 interface ButtonsGroupProps {
@@ -12,18 +13,20 @@ interface ButtonsGroupProps {
 
 const ButtonsGroup: React.FC<ButtonsGroupProps> = ({ rightButtonBorder = false }) => { //{secondaryColor = "black"}
 // const ButtonsGroup: React.FC = () => {
+    const { t } = useTranslation();
+    
     return (
         <div className="row justify-content-center align-items-center flex-wrap gx-5 gy-4">
             <div className="col-xl-5 col-lg-7">
                 <PrimaryBtn
-                    text="Телеграмм AML BOT"
+                    text={t('buttonsGroup.telegramButtonLabel')}
                     imageSrc={TelegramIcon}
                     url=""
                 />
             </div>
             <div className="col-xl-5 col-lg-7">
                 <PrimaryBtn
-                    text="Проверить кошелек"
+                    text={t('buttonsGroup.websiteButtonLabel')}
                     imageSrc={SearchIcon}
                     style='white'
                     border={rightButtonBorder}
@@ -39,5 +42,3 @@ const ButtonsGroup: React.FC<ButtonsGroupProps> = ({ rightButtonBorder = false }
 };
 
 export default ButtonsGroup;
-
-
