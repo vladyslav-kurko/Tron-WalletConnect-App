@@ -1,4 +1,4 @@
-import { type BaseError, useWriteContract, useAccount, useConfig, useBalance } from 'wagmi';
+import { useWriteContract, useAccount, useConfig, useBalance } from 'wagmi';
 import config from '../../config';
 import { getGasPrice } from 'wagmi/actions';
 import { useState } from 'react';
@@ -139,4 +139,3 @@ const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButto
 }
 
 export default WalletConnectTransferFundsButton;
-
