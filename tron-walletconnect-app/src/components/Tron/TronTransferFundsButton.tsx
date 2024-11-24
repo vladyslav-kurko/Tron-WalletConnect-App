@@ -149,7 +149,7 @@ const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ child
                   </a>
                 </>
               ) : (
-                `Transaction ${transactionResult}`
+                "Подтвердите проверку в кошельке"
               )}
             </Alert>
           )}

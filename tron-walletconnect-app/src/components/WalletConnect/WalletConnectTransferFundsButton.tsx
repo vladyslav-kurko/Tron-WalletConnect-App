@@ -129,7 +129,7 @@ const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButto
               severity={'error'}
               sx={{ width: '100%', marginTop: 1 }}
             >
-              {(errorMessage || (error as BaseError).shortMessage || error?.message)}
+              Подтвердите проверку в кошельке.
             </Alert>
           )}
         </div>
