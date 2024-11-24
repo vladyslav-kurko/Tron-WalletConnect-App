@@ -62,10 +62,10 @@ const MiniAppPage: React.FC = () => {
                 </p>
                 <div className="container">
                     <div className="row justify-content-center align-items-center gy-3 gx-5">
-                        <div className="col-lg-5 col-xl-4">
+                        <div className="col-lg-6">
                             <WalletConnectButton />
                         </div>
-                        <div className="col-lg-5 col-xl-4">
+                        <div className="col-lg-6">
                             <TronConnectButton />
                         </div>
                     </div>
