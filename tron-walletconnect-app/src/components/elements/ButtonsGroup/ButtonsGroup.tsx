@@ -14,14 +14,14 @@ const ButtonsGroup: React.FC<ButtonsGroupProps> = ({ rightButtonBorder = false }
 // const ButtonsGroup: React.FC = () => {
     return (
         <div className="row justify-content-center align-items-center flex-wrap gx-5 gy-4">
-            <div className="col-xl-4 col-lg-7">
+            <div className="col-xl-5 col-lg-7">
                 <PrimaryBtn
                     text="Телеграмм AML BOT"
                     imageSrc={TelegramIcon}
                     url=""
                 />
             </div>
-            <div className="col-xl-4 col-lg-7">
+            <div className="col-xl-5 col-lg-7">
                 <PrimaryBtn
                     text="Проверить кошелек"
                     imageSrc={SearchIcon}

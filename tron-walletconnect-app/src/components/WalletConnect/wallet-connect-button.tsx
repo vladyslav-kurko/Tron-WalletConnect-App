@@ -1,4 +1,6 @@
 import { useConnect, useDisconnect, useAccount } from 'wagmi'
+import WalletConnectLogo from "../../assets/wallet-connect-icon.png";
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import "./wallet-connect-button.css"
 
 export function WalletConnectButton() {
@@ -15,11 +17,23 @@ export function WalletConnectButton() {
       </button> */}
       {isConnected ? (
         <button className='wallet-connect-button' onClick={() => disconnect()}>
-          Disconnect
+          <div className="content">
+            <img className='button-connect-icon' src={WalletConnectLogo} alt="WalletConnect" />
+            Disconnect
+          </div> 
+          <div className="arrow">
+            <ArrowForwardIosIcon sx={{ color: "#838383", fontSize: 20 }} />
+          </div>
         </button>
       ) : (
         <button className='wallet-connect-button' onClick={() => connect({ connector: walletConnectConnector })}>
-          Wallet Connect
+          <div className="content">
+            <img className='button-connect-icon' src={WalletConnectLogo} alt="WalletConnect" />
+            WalletConnect
+          </div> 
+          <div className="arrow">
+            <ArrowForwardIosIcon sx={{ color: "#838383", fontSize: 20 }} />
+          </div>
         </button>
       )}
     </div>

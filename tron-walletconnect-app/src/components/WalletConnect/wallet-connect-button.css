@@ -1,17 +1,31 @@
 .wallet-connect-button {
     width: 100%;
-    padding: 22px 0;
-    background-color: #0057FF;
-    border: none;
-    border-radius: 999px;
-    color: white;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 3px solid #d3d3d3;
+    border-radius: 20px;
+    color: rgb(0, 0, 0);
     font-size: 1.25rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button-connect-icon {
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
 }
 
 /* Mobile specific styles */
 @media (max-width: 767.98px) {
     .wallet-connect-button {
         font-size: 1em;
-        padding: 17px 2rem;
+        padding: 10px 2rem;
     } 
+
+    .button-connect-icon {
+        height: 40px;
+    }
 }
