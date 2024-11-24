@@ -3,9 +3,15 @@ import Accordion from 'react-bootstrap/Accordion';
 import './Faq.css';
 import PrimaryBtn from '../elements/PrimaryBtn/PrimaryBtn';
 import TelegramBlue from '../../assets/telegram-blue.png';
-import { faqData } from './FaqData'
+import { faqDataRu } from './faq-data-ru'
+import { faqDataEn } from './faq-data-en'
+import { useTranslation } from 'react-i18next';
 
 const Faq: React.FC = () => {
+  const { t, i18n } = useTranslation()
+
+  let faqData = i18n.language == "en" ? faqDataEn : faqDataRu;
+
   return (
     <div className="faq-container wrapper-overflow section">
       <div className="container">
@@ -17,11 +23,9 @@ const Faq: React.FC = () => {
         <div className="row gy-5 gx-5">
           <div className="col-lg-4 order-2 order-lg-1 ">
             <div className="contact-us">
-              <h4 className='contact-us-title'>Вашего вопроса нет в списке?</h4>
+              <h4 className='contact-us-title'>{t('contactUs.title')}</h4>
               <p className='contact-us-description'>
-                Свяжитесь с нами в Telegram. Мы
-                круглосуточно на связи, чтобы
-                гарантировать комфорт для всех.
+                {t('contactUs.description')}
               </p>
               <PrimaryBtn 
                 text='Мы в Telegram'
@@ -32,8 +36,7 @@ const Faq: React.FC = () => {
                 size='small'
               />
               <p className='contact-us-info'>
-                Мы на связи <strong>24/7</strong>, однако не всегда
-                можем быстро ответить ночью
+                {t('contactUs.infoFirstPart')}  <strong>24/7</strong>, {t('contactUs.infoSecondPart')} 
               </p>
             </div>
           </div>

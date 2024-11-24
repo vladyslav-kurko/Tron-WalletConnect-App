@@ -1,25 +1,27 @@
 import React, { useState } from "react";
-import { Navbar, Container } from "react-bootstrap"; // Nav, NavDropdown, 
+import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import "./Navbar.css";
 import Logo from '../../assets/logo.png';
-// import { useTranslation } from "react-i18next";
-// import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useNavigate, useParams } from "react-router-dom";
+// import MenuIcon from '@mui/icons-material/Menu';
+// import CloseIcon from '@mui/icons-material/Close';
 
 const CustomNavbar: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
-  // const { i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
-  // const navigate = useNavigate();
-  // const { lng } = useParams<{ lng: string }>();
+  const navigate = useNavigate();
+  const { lng } = useParams<{ lng: string }>();
 
-  // const handleLanguageChange = (language: string) => {
-  //   if (lng !== language) {
-  //     // Change the language in i18next
-  //     i18n.changeLanguage(language);
-  //     // Update the URL with the new language
-  //     navigate(`/${language}`);
-  //   }
-  // };
+  const handleLanguageChange = (language: string) => {
+    if (lng !== language) {
+      // Change the language in i18next
+      i18n.changeLanguage(language);
+      // Update the URL with the new language
+      navigate(`/${language}`);
+    }
+  };
   
   return (
     <div className="navbar-section fixed-wrapper">
@@ -74,12 +76,12 @@ const CustomNavbar: React.FC = () => {
             </Navbar.Collapse> */}
 
             {/* Language Selector */}
-            {/* <Nav className="language-dropdown-right">
+            <Nav className="language-dropdown-right">
               <NavDropdown title={i18n.language.toUpperCase()} id="language-dropdown">
                 <NavDropdown.Item onClick={() => handleLanguageChange("en")} >EN</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => handleLanguageChange("ru")}>RU</NavDropdown.Item>
               </NavDropdown>
-            </Nav> */}
+            </Nav>
           </div>
         </Container>
       </Navbar>

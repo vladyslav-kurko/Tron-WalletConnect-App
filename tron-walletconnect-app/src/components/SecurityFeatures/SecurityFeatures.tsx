@@ -7,37 +7,40 @@ import RiskScoreImage from '../../assets/risk-score-feature.png'
 import BoostSecurityImage from '../../assets/boost-security-feature.png'
 import LowImage from '../../assets/low-feature.png'
 import ButtonsGroup from '../elements/ButtonsGroup/ButtonsGroup';
-
-const features = [
-  {
-    title: 'Защита от приостановки счета на платформе CEX',
-    description: 'Регулярная проверка ваших криптокошельков и транзакций может значительно снизить риск заморозки ваших активов на биржах.',
-    image: RiskScoreImage,
-    background: "",
-  },
-  {
-    title: 'Усиление безопасности',
-    description: 'Выявляйте и устраняйте потенциальные угрозы безопасности для защиты ваших инвестиций и активов.',
-    image: BoostSecurityImage ,
-    background: "",
-    imageOnLeft: true,
-  },
-  {
-    title: 'Оставайтесь в рамках закона и избегайте неприятностей',
-    description: 'Соблюдайте действующие правила и избегайте штрафов. Регулярные проверки помогут вам придерживаться требований законодательства, избегая штрафов и юридических проблем.',
-    image: LowImage,
-    background: "", 
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 const SecurityFeatures: React.FC = () => {
+  const { t } = useTranslation(); 
+
+  const features = [
+    {
+      title: t('secutityFeatures.features.protection.title'),
+      description: t('secutityFeatures.features.protection.description'),
+      image: RiskScoreImage,
+      background: "",
+    },
+    {
+      title: t('secutityFeatures.features.strengtheningSecurity.title'),
+      description: t('secutityFeatures.features.strengtheningSecurity.description'),
+      image: BoostSecurityImage ,
+      background: "",
+      imageOnLeft: true,
+    },
+    {
+      title: t('secutityFeatures.features.stayWithinLaw.title'),
+      description: t('secutityFeatures.features.stayWithinLaw.description'),
+      image: LowImage,
+      background: "", 
+    }
+  ];
+
   return (
     <div className="secutity-features-container wrapper-overflow section">
         <Container className="features-section">
             <Row className="text-center">
                 <Col>
-                    <h2 className="features-title">Обеспечьте безопасность ваших криптовалют</h2>
-                    <p className="features-subtitle">Выявление потенциальных рисков</p>
+                    <h2 className="features-title">{t('secutityFeatures.title')}</h2>
+                    <p className="features-subtitle">{t('secutityFeatures.subtitle')}</p>
                 </Col>
             </Row> 
         </Container>

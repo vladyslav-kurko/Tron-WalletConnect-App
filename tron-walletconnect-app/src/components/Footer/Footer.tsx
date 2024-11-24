@@ -11,8 +11,11 @@ import Trustpilot from '../../assets/Trustpilot.png'
 // import MediumLogo from '../../assets/medium-circle.png'
 
 import linksConfig from '../../linksConfig';
+import { useTranslation } from 'react-i18next';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="footer-section wrapper-overflow section">
       <div className="container">
@@ -109,7 +112,7 @@ const Footer: React.FC = () => {
                   >
                     <path d="M6.27812 9.87845L6.01345 13.6011C6.39212 13.6011 6.55612 13.4385 6.75279 13.2431L8.52815 11.5465L12.2068 14.2404C12.8815 14.6164 13.3568 14.4185 13.5388 13.6198L15.9535 2.30509L15.9541 2.30442C16.1681 1.30709 15.5935 0.917091 14.9361 1.16176L0.742785 6.59576C-0.225882 6.97176 -0.211215 7.51176 0.578118 7.75642L4.20679 8.88507L12.6354 3.61109C13.0321 3.34842 13.3928 3.49376 13.0961 3.75642L6.27812 9.87845Z"/>
                   </svg>
-                  <span className="support-button-text">Поддержка</span>
+                  <span className="support-button-text">{t('footer.supportButton')}</span>
                 </a>
               </div>
             </div>

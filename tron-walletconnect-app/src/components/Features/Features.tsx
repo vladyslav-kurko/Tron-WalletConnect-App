@@ -3,26 +3,29 @@ import './Features.css';
 import SearchImage from '../../assets/search.png';
 import ConnectionsImage from '../../assets/connections.png';
 import SecurityImage from '../../assets/security.png';
-
-const featuresData = [
-  {
-    icon: SearchImage, // Placeholder icon; replace with an actual image if needed
-    title: 'Подозрительные транзакции',
-    description: 'Выявление активов, связанных с незаконной деятельностью, включая мошенничество, терроризм, вымогательство и другие преступления.',
-  },
-  {
-    icon: ConnectionsImage, // Placeholder icon; replace with an actual image if needed
-    title: 'Расследования',
-    description: 'Просматривайте прямые и косвенные связи между заданным адресом и выявленными кластерами, общую сумму, отправленную на/из целевого кошелька, и расстояние до него.',
-  },
-  {
-    icon: SecurityImage, // Placeholder icon; replace with an actual image if needed
-    title: 'Отслеживание адреса',
-    description: 'Отслеживание в реальном времени всех транзакций, связанных с указанным адресом блокчейна, получение мгновенных уведомлений о входящих и исходящих транзакциях.',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const Features: React.FC = () => {
+  const { t } = useTranslation(); 
+
+  const featuresData = [
+    {
+      icon: SearchImage, // Placeholder icon; replace with an actual image if needed
+      title: t('features.suspiciousTransactions.title'),
+      description: t('features.suspiciousTransactions.description'),
+    },
+    {
+      icon: ConnectionsImage, // Placeholder icon; replace with an actual image if needed
+      title: t('features.investigations.title'),
+      description: t('features.investigations.description'),
+    },
+    {
+      icon: SecurityImage, // Placeholder icon; replace with an actual image if needed
+      title: t('features.addressTracking.title'),
+      description: t('features.addressTracking.description'),
+    },
+  ];
+
   return (
     <div className="features-container wrapper-overflow section">
       <div className="container">

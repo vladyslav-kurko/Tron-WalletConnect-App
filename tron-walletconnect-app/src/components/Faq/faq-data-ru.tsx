@@ -1,4 +1,4 @@
-export const faqData = [
+export const faqDataRu = [
     {
         title: 'Что показывает проверка AMLBot?',
         description: `<p>Базовый результат проверки AMLBot включает процент оценки риска, источники риска и принадлежность к черному списку.</p>

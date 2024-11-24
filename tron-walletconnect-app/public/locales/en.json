@@ -1,16 +1,92 @@
 {
     "homeBanner": {
-        "title": "Protecting your wallets from dirty money",
-        "subtitle": "Receiving funds of illegal origin may result in your funds being frozen."
+        "title": "Protect your wallets from dirty money",
+        "subtitle": "Receiving funds of illegal origin can lead to your funds being frozen"
     },
     "buttonsGroup": {
         "telegramButtonLabel": "Telegram AML BOT",
         "websiteButtonLabel": "Check wallet"
     },
     "partners": {
-        "title": "We are trusted by control department specialists"
+        "title": "Trusted by compliance professionals"
     },
-    "representatives" : {
+    "representatives": {
         "title": "We are trusted representatives"
+    },
+    "contactUs": {
+        "title": "Your question is not listed?",
+        "description": "Contact us on Telegram. We are available 24/7 to ensure comfort for everyone.",
+        "infoFirstPart": "We are online",
+        "infoSecondPart": "but may not respond quickly at night"
+    },
+    "features": {
+        "suspiciousTransactions": {
+            "title": "Suspicious transactions",
+            "description": "Detection of assets linked to illegal activities, including fraud, terrorism, extortion, and other crimes."
+        },
+        "investigations": {
+            "title": "Investigations",
+            "description": "View direct and indirect links between a given address and identified clusters, the total amount sent to/from the target wallet, and the distance to it."
+        },
+        "addressTracking": {
+            "title": "Address tracking",
+            "description": "Real-time tracking of all transactions associated with the specified blockchain address, receiving instant notifications of incoming and outgoing transactions."
+        }
+    },
+    "riskMessage": {
+        "title": "23% of wallets hold risky assets, making users vulnerable to fraud, scams, or bad actors.",
+        "description": "AMLBot's risk assessment is based on data from multiple sources, ensuring we have the most reliable data in the industry."
+    },
+    "secutityFeatures": {
+        "title": "Ensure the security of your cryptocurrencies",
+        "subtitle": "Identifying potential risks",
+        "features": {
+            "protection": {
+                "title": "Protection from account suspension on CEX platforms",
+                "description": "Regularly checking your crypto wallets and transactions can significantly reduce the risk of your assets being frozen on exchanges."
+            },
+            "strengtheningSecurity": {
+                "title": "Strengthening security",
+                "description": "Identify and eliminate potential security threats to safeguard your investments and assets."
+            },
+            "stayWithinLaw": {
+                "title": "Stay within the law and avoid trouble",
+                "description": "Comply with existing regulations and avoid fines. Regular checks help you adhere to legal requirements, avoiding penalties and legal issues."
+            }
+        }
+    },
+    "verificationSteps": {
+        "title": "How to verify your address?",
+        "firstStep": {
+            "title": "Telegram bot",
+            "description": "Simply go to the Telegram bot and press the [ AML ] button to initiate a comprehensive check of your crypto wallet. This is a convenient option for users who prefer anonymity and security."
+        },
+        "secondStep": {
+            "title": "Website",
+            "description": "Use our user-friendly website to check your crypto wallet. The simple and intuitive interface allows you to quickly get AML check results. If you have questions or difficulties, our support team is always ready to assist and quickly resolve your issue."
+        },
+        "or": "OR",
+        "telegramButton": "Telegram AML bot",
+        "supportButton": "Support"
+    },
+    "whyWe": {
+        "title": "Why AMLBot?",
+        "individualApproach": {
+            "title": "Individual approach",
+            "firstPoint": "AMLBot offers a wide range of compliance solutions tailored for each client.",
+            "secondPoint": "We are confident we meet your requirements, having helped 300+ cryptocurrency companies of various levels in 25 jurisdictions."
+        },
+        "integratedPlatform": {
+            "title": "Integrated compliance platform",
+            "firstPoint": "We provide KYT/wallet evaluation, KYC, AML, and much more for cryptocurrency companies.",
+            "secondPoint": "AMLBot's risk assessment is based on data from multiple sources, ensuring we have the most reliable data in the industry.",
+            "thirdPoint": "Our services and solutions optimize your company processes and eliminate difficulties associated with compliance requirements."
+        }
+    },
+    "saveCrypto": {
+        "title": "Protect your crypto by identifying risky wallets and transactions"
+    },
+    "footer": {
+        "supportButton": "Support"
     }
 }

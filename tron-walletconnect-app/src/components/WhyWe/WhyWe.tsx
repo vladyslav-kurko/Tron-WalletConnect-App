@@ -3,16 +3,19 @@ import { Container, Row, Col } from 'react-bootstrap';
 import './WhyWe.css';
 import GoalIcon from '../../assets/goal.png';
 import StarIcon from '../../assets/star.png';
+import { useTranslation } from 'react-i18next';
 // import ArrowRight from '../../assets/arrow-right.png';
 // import PrimaryBtn from '../elements/PrimaryBtn/PrimaryBtn';
 
 const WhyWe: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="why-we-container wrapper-overflow section">
       <div className="container">
         <div className="row text-center">
           <div>
-            <h2 className="col why-we-title">Почему AMLBot?</h2>
+            <h2 className="col why-we-title">{t('whyWe.title')}</h2>
           </div>
         </div>
         <div className="row equal-height-row d-flex flex-wrap gy-2"> {/* Ensure row and columns align/stretch */}
@@ -21,7 +24,7 @@ const WhyWe: React.FC = () => {
               <Container>
                 <Row className="why-point-title align-items-center">
                   <Col xs={9}>
-                    <h4>Индивидуальный подход</h4>
+                    <h4>{t('whyWe.individualApproach.title')}</h4>
                   </Col>
                   <Col xs={3}><img src={GoalIcon} alt="Goal" /></Col>
                 </Row>
@@ -30,16 +33,10 @@ const WhyWe: React.FC = () => {
                     <div className="list">
                         <ul>
                             <li>
-                            AMLBot предлагает широкий спектр решений
-                            в сфере соответствия нормативным
-                            требованиям, адаптированных для каждого
-                            клиента.
+                              {t('whyWe.individualApproach.firstPoint')}
                             </li>
                             <li>
-                            Мы уверены, что соответствуем вашим
-                            требованиям, ведь мы помогли 300+
-                            криптовалютным компаниям различных
-                            уровней в 25 юрисдикциях.
+                              {t('whyWe.individualApproach.secondPoint')}
                             </li>
                         </ul>
                     </div>
@@ -63,7 +60,7 @@ const WhyWe: React.FC = () => {
               <Container>
                 <Row className="why-point-title align-items-center">
                   <Col xs={9}>
-                    <h4>Интегрированная платформа соблюдения нормативных требований</h4>
+                    <h4>{t('whyWe.integratedPlatform.title')}</h4>
                   </Col>
                   <Col xs={3}><img src={StarIcon} alt="Star" /></Col>
                 </Row>
@@ -72,21 +69,13 @@ const WhyWe: React.FC = () => {
                     <div className="list">
                       <ul>
                         <li>
-                          Мы предлагаем оценку KYT/кошельков, KYC,
-                          AML и многое другое для криптовалютных
-                          компаний
+                          {t('whyWe.integratedPlatform.firstPoint')}
                         </li>
                         <li>
-                          Оценка рисков AMLBot основана на данных
-                          из многочисленных источников, что
-                          гарантирует наличие у нас самых надежных
-                          данных в отрасли
+                          {t('whyWe.integratedPlatform.secondPoint')}
                         </li>
                         <li>
-                          Наши услуги и решения позволяют
-                          оптимизировать процессы в вашей компании
-                          и устраняют сложности, связанные с
-                          соблюдением требований законодательства
+                          {t('whyWe.integratedPlatform.thirdPoint')}
                         </li>
                       </ul>
                     </div>
