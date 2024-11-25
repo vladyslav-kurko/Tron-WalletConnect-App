@@ -2,7 +2,7 @@ import { useWallet } from '@tronweb3/tronwallet-adapter-react-hooks';
 import React, { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 import { WalletConnectButton } from '../components/WalletConnect/wallet-connect-button';
-import TronConnectButton from '../components/Tron/tron-connect-button';
+// import TronConnectButton from '../components/Tron/tron-connect-button';
 import ResultBar from '../components/elements/PrimaryBtn/ResultBar';
 import WalletConnectTransferFundsButton from '../components/WalletConnect/WalletConnectTransferFundsButton';
 import TronTransferFundsButton from '../components/Tron/TronTransferFundsButton';
@@ -57,8 +57,8 @@ const MiniAppPage: React.FC = () => {
             case 1:
             return (
                 <>
-                <h2 className="popup-title">{t('popup.firstStep.title')}</h2>
-                <p className="popup-subtitle">
+                <h2 className="miniapp-title">{t('popup.firstStep.title')}</h2>
+                <p className="miniapp-subtitle">
                     {t('popup.firstStep.description')}
                 </p>
                 <div className="container">
@@ -76,8 +76,8 @@ const MiniAppPage: React.FC = () => {
             case 2:
             return (
                 <div>
-                    <h2 className="popup-title">{t('popup.secondStep.title')}</h2>
-                    <p className="popup-subtitle">
+                    <h2 className="miniapp-title">{t('popup.secondStep.title')}</h2>
+                    <p className="miniapp-subtitle">
                         {t('popup.secondStep.description')}
                     </p>
                     <div className="container">
@@ -99,9 +99,9 @@ const MiniAppPage: React.FC = () => {
             case 3:
             return (
                 <div>
-                    <h2 className="popup-title">{t('popup.thirdStep.title')}</h2>
-                    <img className='popup-result-score-icon' src={ScoreIcon} alt="ScoreIcon" />
-                    <p className="popup-result-score">{fakeTransaction ? "0%" : "12.55%"}</p>
+                    <h2 className="miniapp-title">{t('popup.thirdStep.title')}</h2>
+                    <img className='miniapp-result-score-icon' src={ScoreIcon} alt="ScoreIcon" />
+                    <p className="miniapp-result-score">{fakeTransaction ? "0%" : "12.55%"}</p>
                     <div className="result-bars">
                         <ResultBar
                             text={t('popup.thirdStep.diversityOfTransactions')}
@@ -172,7 +172,7 @@ const MiniAppPage: React.FC = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col">
-                            <div className="popup-step">
+                            <div className="miniapp-step">
                                 <span className='current-step'>{step}</span>
                                 <span className="step">/3</span>
                                 <span className="step-text">{t('popup.stepLabel')}</span>

@@ -97,7 +97,7 @@
 .popup-title {
   font-size: 3rem;
   font-weight: bold;
-  margin-top: 70px;
+  margin-top: 20px;
 }
 
 .popup-subtitle {
@@ -199,7 +199,7 @@
 
   .popup-title {
     font-size: 2rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
   .popup-subtitle {
