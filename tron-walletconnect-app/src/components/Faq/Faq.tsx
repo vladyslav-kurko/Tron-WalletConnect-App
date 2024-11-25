@@ -44,7 +44,7 @@ const Faq: React.FC = () => {
             <div className="accordion">
               <Accordion>
                 {faqData.map((faq, index) => (
-                  <Accordion.Item eventKey={index.toString()}>
+                  <Accordion.Item eventKey={index.toString()} key={index}>
                     <Accordion.Header>{faq.title}</Accordion.Header>
                     <Accordion.Body>
                       <div dangerouslySetInnerHTML={{ __html: faq.description }}></div>

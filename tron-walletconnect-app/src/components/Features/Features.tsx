@@ -31,8 +31,8 @@ const Features: React.FC = () => {
       <div className="container">
         <div className="row equal-height-row d-flex flex-wrap gx-2">
           {featuresData.map((feature, index) => (
-            <div className="col-md-4 d-flex flex-column">
-              <div className="feature-card" key={index}>
+            <div className="col-md-4 d-flex flex-column" key={index}>
+              <div className="feature-card">
                 <div className="container">
                   <div className="row">
                     <div className="col-2 image-col">

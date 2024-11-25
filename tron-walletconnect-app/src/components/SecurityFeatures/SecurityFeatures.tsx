@@ -44,8 +44,9 @@ const SecurityFeatures: React.FC = () => {
                 </Col>
             </Row> 
         </Container>
-        {features.map((feature) => (
+        {features.map((feature, index) => (
             <FeatureCard
+              key={index}
               title={feature.title}
               description={feature.description}
               image={feature.image}

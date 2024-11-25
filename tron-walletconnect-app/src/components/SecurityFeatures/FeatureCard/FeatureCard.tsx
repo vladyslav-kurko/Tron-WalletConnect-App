@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import './FeatureCard.css';
 
 interface FeatureCardProps {
+    key: number;
     title: string;
     description: string;
     image: string;
