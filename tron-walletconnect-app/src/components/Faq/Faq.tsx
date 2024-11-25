@@ -7,6 +7,8 @@ import { faqDataRu } from './faq-data-ru'
 import { faqDataEn } from './faq-data-en'
 import { useTranslation } from 'react-i18next';
 
+import linksConfig from '../../linksConfig';
+
 const Faq: React.FC = () => {
   const { t, i18n } = useTranslation()
 
@@ -28,8 +30,8 @@ const Faq: React.FC = () => {
                 {t('contactUs.description')}
               </p>
               <PrimaryBtn 
-                text='Мы в Telegram'
-                url=''
+                text={t('contactUs.buttonText')}
+                url={linksConfig.support}
                 imageSrc={TelegramBlue}
                 style='white'
                 justifyContent='space-between'

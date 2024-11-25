@@ -17,7 +17,8 @@
         "title": "Вашего вопроса нет в списке?",
         "description": "Свяжитесь с нами в Telegram. Мы круглосуточно на связи, чтобы гарантировать комфорт для всех.",
         "infoFirstPart": "Мы на связи",
-        "infoSecondPart": "однако не всегда можем быстро ответить ночью"
+        "infoSecondPart": "однако не всегда можем быстро ответить ночью",
+        "buttonText": "Мы в Telegram"
     },
     "features": {
         "suspiciousTransactions": {

@@ -48,7 +48,7 @@ const VerificationSteps: React.FC = () => {
                 </div>
               </div>
               <div className="col-xl-3 col-lg-6 col-md-12 buttons">
-                  <PrimaryBtn text={t('verificationSteps.telegramButton')} imageSrc={TelegramBlue} url="" style='white' />
+                  <PrimaryBtn text={t('verificationSteps.telegramButton')} imageSrc={TelegramBlue} url={linksConfig.telegramBot} style='white' />
                   <div className="separator">
                     <span className="separator-text">{t('verificationSteps.or')}</span>
                   </div>

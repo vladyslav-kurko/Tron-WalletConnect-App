@@ -17,7 +17,8 @@
         "title": "Your question isn't listed?",
         "description": "Contact us on Telegram. We’re available 24/7 to ensure comfort for everyone.",
         "infoFirstPart": "We’re available",
-        "infoSecondPart": "but may not always respond quickly at night"
+        "infoSecondPart": "but may not always respond quickly at night",
+        "buttonText": "We in Telegram"
     },
     "features": {
         "suspiciousTransactions": {
