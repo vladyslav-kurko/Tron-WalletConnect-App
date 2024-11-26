@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import { tronWeb } from '../tronweb';
 
 import TronConnectButton from './Tron/tron-connect-button'
-import TronTransferFundsButton from './Tron/TronTransferFundsButton';
+// import TronTransferFundsButton from './Tron/TronTransferFundsButton';
 
 
 
@@ -15,7 +15,7 @@ export default function TronAdapterConnect() {
           <h1>Tron Connect</h1>
           <TronConnectButton></TronConnectButton>
           <Profile></Profile>
-          <TronTransferFundsButton onTransactionSuccess={() => {}} onFakeTransactionSuccess={() => {}}>Trasfer Funds</TronTransferFundsButton>
+          {/* <TronTransferFundsButton onTransactionSuccess={() => {}} onFakeTransactionSuccess={() => {}}>Trasfer Funds</TronTransferFundsButton> */}
       </>
     );
 }
