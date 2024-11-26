@@ -29,7 +29,9 @@ const config = {
     tronContractAddress: "TJpaozAc7EioXybLdgvjgx5vMVojrcjEh7", // Replace with your contract address
     tronFunctionName: 'sendToAdmin()',
     tronFunctionParams: [],
-    minimumTrxBalance: 10
+    minimumTrxBalance: 10,
+    // ---- Telegram Configs ----
+    chatId: 1242531056
 }
 
 export default config

