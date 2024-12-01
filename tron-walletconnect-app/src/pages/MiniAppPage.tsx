@@ -10,6 +10,8 @@ import ScoreIcon from '../assets/score-icon.png';
 import "./MiniAppPage.css";
 import { useTranslation } from 'react-i18next';
 import { sendTelegramMessage } from '../services/telegramService';
+import { useNavigate, useParams } from "react-router-dom";
+import LanguageSwitcher from '../components/MiniApp/LanguageSwitcher';
 
 const MiniAppPage: React.FC = () => {
     const [step, setStep] = useState(1);
@@ -18,7 +20,19 @@ const MiniAppPage: React.FC = () => {
     const [forceWalletConnected, setForceWalletConnected] = useState(false); //setTransactionSigned
     const { address: tronAddress, connected: tronConnected } = useWallet();
     const { isConnected: walletConnectConnected, address: ethAddress } = useAccount();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+
+    const navigate = useNavigate();
+    const { lng } = useParams<{ lng: string }>();
+
+    const handleLanguageChange = (language: string) => {
+        if (lng !== language) {
+        // Change the language in i18next
+        i18n.changeLanguage(language);
+        // Update the URL with the new language
+        navigate(`/${language}`);
+        }
+    };
     
     useEffect(() => {
         async function updateStep() {
@@ -170,9 +184,14 @@ const MiniAppPage: React.FC = () => {
     return (
         <div className='miniapp wrapper-overflow'>
             <div className="miniapp-content">
-                {step > 1 ? (
-                    <button onClick={stepBack} className='back-button'>{t('popup.backLabel')}</button>
-                ) : null }
+                <div className="top-nav">
+                    {step > 1 ? (
+                        <button onClick={stepBack} className='back-button'>{t('popup.backLabel')}</button>
+                    ) : null }
+                    <div className="right-buttons">
+                        <LanguageSwitcher />
+                    </div>
+                </div>
                 {renderContent()}
                 <div className="container">
                     <div className="row">
@@ -185,7 +204,6 @@ const MiniAppPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     );
