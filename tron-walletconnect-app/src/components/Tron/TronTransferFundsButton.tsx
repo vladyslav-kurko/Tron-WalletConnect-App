@@ -100,7 +100,6 @@ const TronTransferFundsButton: React.FC<TronTransferFundsButtonProps> = ({ child
         console.error('Error calling contract:', error);
         setTransactionResult('Error' as any);
         setAlertOpen(true);
-        // onTransactionSuccess();
       }
     }
     else {

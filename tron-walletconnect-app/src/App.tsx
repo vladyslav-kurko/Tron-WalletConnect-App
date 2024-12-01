@@ -92,7 +92,7 @@ export default function App() {
                   <Route path="/" element={<Navigate to={"/ru"} replace />} />
 
                   {/* Redirect non-language paths to default language */}
-                  <Route path="/miniapp" element={<Navigate to="/en/miniapp" replace />} />
+                  <Route path="/miniapp" element={<Navigate to="/ru/miniapp" replace />} />
 
                   {/* Language-specific routes */}
                   <Route path="/:lng" element={<LanguageWrapper />}>
