@@ -101,7 +101,7 @@ const PrimaryBtn: React.FC<PrimaryBtnProps> = ({ text, imageSrc, justifyContent 
                 <div className="col-lg-5 col-xl-4">
                   <WalletConnectButton />
                 </div>
-                <div className="col-lg-5 col-xl-4">
+                <div className="col-lg-5 col-xl-4 hide-desctop">
                   <TronConnectButton />
                 </div>
               </div>

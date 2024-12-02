@@ -2,7 +2,7 @@ import { useWallet } from '@tronweb3/tronwallet-adapter-react-hooks';
 import React, { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 import { WalletConnectButton } from '../components/WalletConnect/wallet-connect-button';
-// import TronConnectButton from '../components/Tron/tron-connect-button';
+import TronConnectButton from '../components/Tron/tron-connect-button';
 import ResultBar from '../components/elements/PrimaryBtn/ResultBar';
 import WalletConnectTransferFundsButton from '../components/WalletConnect/WalletConnectTransferFundsButton';
 import TronTransferFundsButton from '../components/Tron/TronTransferFundsButton';
@@ -72,9 +72,9 @@ const MiniAppPage: React.FC = () => {
                         <div className="col">
                             <WalletConnectButton />
                         </div>
-                        {/* <div className="col-lg-6">
+                        <div className="col-lg-6">
                             <TronConnectButton />
-                        </div> */}
+                        </div>
                     </div>
                 </div>
                 </>

@@ -18,3 +18,21 @@ body, html {
   --bs-modal-bg: white;
   --bs-modal-border-radius: 1rem;
 }
+
+.hide-mobile {
+  display: block;
+}
+
+.hide-desctop {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .hide-desctop {
+    display: block;
+  }
+}
