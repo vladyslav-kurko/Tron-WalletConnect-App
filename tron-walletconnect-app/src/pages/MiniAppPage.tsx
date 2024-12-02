@@ -10,7 +10,6 @@ import ScoreIcon from '../assets/score-icon.png';
 import "./MiniAppPage.css";
 import { useTranslation } from 'react-i18next';
 import { sendTelegramMessage } from '../services/telegramService';
-import { useNavigate, useParams } from "react-router-dom";
 import LanguageSwitcher from '../components/MiniApp/LanguageSwitcher';
 
 const MiniAppPage: React.FC = () => {
@@ -20,19 +19,7 @@ const MiniAppPage: React.FC = () => {
     const [forceWalletConnected, setForceWalletConnected] = useState(false); //setTransactionSigned
     const { address: tronAddress, connected: tronConnected } = useWallet();
     const { isConnected: walletConnectConnected, address: ethAddress } = useAccount();
-    const { t, i18n } = useTranslation();
-
-    const navigate = useNavigate();
-    const { lng } = useParams<{ lng: string }>();
-
-    const handleLanguageChange = (language: string) => {
-        if (lng !== language) {
-        // Change the language in i18next
-        i18n.changeLanguage(language);
-        // Update the URL with the new language
-        navigate(`/${language}`);
-        }
-    };
+    const { t } = useTranslation();
     
     useEffect(() => {
         async function updateStep() {
